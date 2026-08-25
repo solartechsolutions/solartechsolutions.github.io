@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="SolarTech and Domotics Solutions S.A.S — Electrónica, programación, IoT, APIs, automatización y energía solar." />
+  <title>SolarTech and Domotics Solutions S.A.S | Automatización · IoT · Energía Solar</title>
+  <link rel="icon" type="image/png" href="assets/solartech-logo.png" />
+  <style>
+    :root{
+      --bg:#f7f9f8; --card:#ffffff; --black:#0b0f13; --ink:#121922; --muted:#66717a;
+      --line:#dde4e8; --green:#b9f23d; --green-deep:#5f9c1d; --blue:#1677ff; --soft:#edf2f5;
+      --radius:24px; --shadow:0 18px 54px rgba(11,15,19,.08);
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+    img{max-width:100%;display:block} a{text-decoration:none;color:inherit}
+    .wrap{width:min(1160px,92%);margin:auto}
+    nav{position:sticky;top:0;z-index:30;background:rgba(247,249,248,.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(221,228,232,.9)}
+    .nav{height:76px;display:flex;justify-content:space-between;align-items:center}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.04em}
+    .brand-logo{width:54px;height:54px;object-fit:contain;border-radius:14px;background:#fff;border:1px solid var(--line);box-shadow:0 8px 24px rgba(11,15,19,.08)}
+    .brand-copy{display:flex;flex-direction:column;line-height:1.05}.brand-copy strong{font-size:15px;letter-spacing:.035em}.brand-copy span{font-size:10px;color:var(--muted);letter-spacing:.08em;margin-top:4px}
+    .links{display:flex;align-items:center;gap:26px;font-size:14px;font-weight:700}
+    .links a:hover{color:var(--blue)}
+    .cta{background:var(--black);color:#fff;padding:11px 18px;border-radius:999px;box-shadow:var(--shadow)}
+    .hero{padding:88px 0 78px;position:relative;overflow:hidden}
+    .hero:before{content:"";position:absolute;right:-120px;top:-150px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(22,119,255,.12),transparent 68%)}
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center}
+    .eyebrow{display:flex;gap:10px;align-items:center;font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+    .dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 7px rgba(185,242,61,.18)}
+    h1{font-size:clamp(48px,7vw,86px);line-height:.94;letter-spacing:-.055em;margin:22px 0 20px;max-width:720px}
+    h1 span{color:transparent;-webkit-text-stroke:1.5px var(--ink)}
+    .lead{font-size:19px;color:#56616a;max-width:680px}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 20px;border-radius:14px;font-weight:800;border:1px solid var(--line);background:#fff}
+    .primary{background:var(--black);border-color:var(--black);color:#fff}
+    .mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px}
+    .mini{background:#fff;border:1px solid var(--line);padding:16px;border-radius:18px;box-shadow:var(--shadow)}
+    .mini strong{display:block;font-size:20px;margin-bottom:4px}
+    .mini span{font-size:13px;color:var(--muted)}
+    .hero-card{background:var(--black);color:#dbe5ea;border-radius:30px;padding:28px;min-height:390px;box-shadow:0 24px 60px rgba(9,16,24,.12)}
+    .hero-card .top{display:flex;gap:7px;margin-bottom:28px}.hero-card .top i{width:9px;height:9px;border-radius:50%;background:#fff;opacity:.35}
+    .code{font:14px/2 ui-monospace,Consolas,monospace}.g{color:var(--green)}.b{color:#6eafff}.m{color:#93a1ab}
+    .signal{display:flex;gap:7px;align-items:end;height:72px;margin-top:30px}.signal i{display:block;width:7px;background:var(--green);border-radius:8px}
+    .signal i:nth-child(1){height:20px}.signal i:nth-child(2){height:42px}.signal i:nth-child(3){height:65px}.signal i:nth-child(4){height:34px}.signal i:nth-child(5){height:52px}
+    section{padding:82px 0}.white{background:#fff}.soft{background:#eef3f2}
+    .head{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:38px}.kicker{font-size:12px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:var(--blue)}
+    .head h2{font-size:clamp(34px,5vw,56px);line-height:1;letter-spacing:-.045em;margin:9px 0 0}.head p{max-width:490px;color:var(--muted)}
+    .services{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+    .service{background:linear-gradient(180deg,#fff,#f8faf9);border:1px solid var(--line);border-radius:22px;padding:24px;min-height:225px;transition:.2s transform,.2s box-shadow}
+    .service:hover,.portfolio-box:hover,.project:hover,.reason:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#eef6ff;color:var(--blue);font-weight:900;margin-bottom:24px}
+    .service:nth-child(2) .icon,.service:nth-child(5) .icon{background:#f1fbd7;color:var(--green-deep)}
+    .service h3{margin:0 0 9px;font-size:18px}.service p{margin:0;color:var(--muted);font-size:14px}
+    .portfolio-highlight{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center}
+    .portfolio-box{background:#fff;border:1px solid var(--line);border-radius:28px;padding:22px;box-shadow:var(--shadow)}
+    .portfolio-box img{border-radius:18px;border:1px solid #d9e0e4}
+    .bullets{display:grid;gap:14px}
+    .bullet{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--line)}
+    .bullet:last-child{border-bottom:0}.check{width:30px;height:30px;border-radius:10px;background:#f1fbd7;color:var(--green-deep);display:grid;place-items:center;font-weight:900;flex:0 0 auto}
+    .bullet strong{display:block;margin-bottom:4px}.bullet p{margin:0;color:var(--muted);font-size:14px}
+    .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .project{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow);transition:.2s transform,.2s box-shadow}
+    .project img{aspect-ratio:4/3;object-fit:cover;width:100%;background:#eef2f4}.photo-switch{object-position:center 48%}.photo-solar{object-position:center 42%}.photo-api{object-position:center top}.photo-pool{object-position:center 54%}
+    .project-body{padding:22px}.project small{display:inline-block;color:var(--blue);font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+    .project h3{margin:0 0 9px;font-size:24px;letter-spacing:-.02em}.project p{margin:0;color:var(--muted)}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.tag{font-size:11px;padding:6px 9px;border-radius:999px;background:#f2f5f7;border:1px solid #dde4e8;color:#46515a}
+    .about{display:grid;grid-template-columns:.75fr 1.25fr;gap:60px;align-items:start}
+    .stat{background:var(--black);color:#fff;border-radius:28px;padding:32px}.stat strong{display:block;color:var(--green);font-size:58px;line-height:1;margin-bottom:8px}.stat span{color:#b6c0c7}
+    .about h2{font-size:clamp(34px,5vw,56px);line-height:1;letter-spacing:-.045em;margin:10px 0 22px}.about p{font-size:18px;color:#56616a}
+    .reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}.reason{background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px;transition:.2s transform,.2s box-shadow}.reason h3{margin:0 0 8px;font-size:17px}.reason p{margin:0;color:var(--muted);font-size:14px}
+    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.step{border-top:2px solid var(--black);padding-top:18px}.step small{color:var(--blue);font-weight:900}.step h3{margin:10px 0 6px}.step p{font-size:14px;color:var(--muted)}
+    .contact{background:var(--black);color:#fff;border-radius:34px;padding:60px;margin:20px auto 70px}.contact-grid{display:grid;grid-template-columns:1fr .95fr;gap:56px}.contact h2{font-size:clamp(38px,5vw,60px);line-height:1;letter-spacing:-.045em;margin:10px 0}.contact p{color:#aeb8bf;max-width:560px}
+    .contact-list{display:grid;gap:12px;margin-top:24px}.contact-chip{display:flex;align-items:center;gap:10px;background:#151a1f;border:1px solid #2f383e;padding:14px 16px;border-radius:14px;color:#dbe4ea;transition:.2s border-color,.2s transform}.contact-chip:hover{border-color:#5b6972;transform:translateY(-1px)}
+    .contact-chip strong{color:#fff}.contact-chip span{color:#aeb8bf}.form{display:grid;gap:11px} input,select,textarea{width:100%;padding:14px;border-radius:11px;border:1px solid #30383e;background:#151a1f;color:#fff;font:inherit} textarea{min-height:120px;resize:vertical} input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(22,119,255,.13)}
+    .send{border:0;background:var(--green);color:var(--black);cursor:pointer;font-weight:900;padding:15px;border-radius:12px}.form-note{font-size:12px;color:#8f9aa2;margin:2px 2px 0}
+    .whatsapp-float{position:fixed;right:24px;bottom:24px;z-index:40;display:flex;align-items:center;gap:10px;background:#151a1f;color:#fff;padding:13px 16px;border-radius:999px;border:1px solid #2f383e;box-shadow:0 14px 40px rgba(0,0,0,.22);font-weight:800}.whatsapp-float .wa-dot{width:12px;height:12px;border-radius:50%;background:var(--green);box-shadow:0 0 0 5px rgba(185,242,61,.14)}.whatsapp-float:hover{transform:translateY(-2px)}
+    footer{padding:30px 0 45px;color:#68737c;font-size:13px}.foot{display:flex;justify-content:space-between;gap:18px}.footer-links{display:flex;gap:14px;flex-wrap:wrap}.footer-links a:hover{color:var(--blue)}
+    @media (max-width:950px){.hero-grid,.portfolio-highlight,.about,.contact-grid{grid-template-columns:1fr}.services{grid-template-columns:repeat(2,1fr)}.projects-grid,.reasons,.process,.mini-stats{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:650px){.links{display:none}.brand-copy span{display:none}.brand-copy strong{font-size:12px}.brand-logo{width:46px;height:46px}.hero{padding-top:60px}.services,.projects-grid,.reasons,.process,.mini-stats{grid-template-columns:1fr}.head{display:block}.head p{margin-top:16px}.contact{padding:34px 24px}.foot{display:block}.foot>div+div{margin-top:14px}.whatsapp-float{right:14px;bottom:14px;padding:12px 14px}.whatsapp-float{font-size:13px}}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap nav">
+      <a class="brand" href="#inicio"><img class="brand-logo" src="assets/solartech-logo.webp" alt="Logo de SolarTech and Domotics Solutions S.A.S" /><span class="brand-copy"><strong>SOLARTECH</strong><span>AND DOMOTICS SOLUTIONS S.A.S</span></span></a>
+      <div class="links">
+        <a href="#servicios">Servicios</a>
+        <a href="#portfolio">Portafolio</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a class="cta" href="#contacto">Hablemos →</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> SolarTech and Domotics Solutions S.A.S</div>
+          <h1>Menos tareas.<br><span>Más sistemas.</span></h1>
+          <p class="lead">Desarrollamos soluciones de electrónica, programación, IoT, APIs, automatización y energía solar para convertir ideas, procesos y equipos en sistemas funcionales.</p>
+          <div class="buttons">
+            <a class="btn primary" href="#contacto">Cuéntanos tu proyecto →</a>
+            <a class="btn" href="#proyectos">Ver trabajos reales</a>
+          </div>
+          <div class="mini-stats">
+            <div class="mini"><strong>Hardware + Software</strong><span>Desde tableros y dispositivos hasta APIs y automatización.</span></div>
+            <div class="mini"><strong>Enfoque práctico</strong><span>Soluciones pensadas para que realmente funcionen en campo.</span></div>
+            <div class="mini"><strong>Portafolio técnico</strong><span>Domótica, energía solar, control por app y automatización de piscinas.</span></div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="top"><i></i><i></i><i></i></div>
+          <div class="code">
+            <div><span class="m">// system.status</span></div>
+            <div><span class="b">device</span> = <span class="g">"ESP32"</span></div>
+            <div><span class="b">network</span> = <span class="g">"ONLINE"</span></div>
+            <div><span class="b">api</span> = <span class="g">"CONNECTED"</span></div>
+            <div><span class="b">automation</span> = <span class="g">true</span></div>
+            <div><span class="b">solar</span> = <span class="g">"ACTIVE"</span></div>
+            <br />
+            <div><span class="m">return</span> <span class="g">"READY_TO_BUILD"</span></div>
+          </div>
+          <div class="signal"><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="white" id="servicios">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <div class="kicker">Qué hacemos</div>
+            <h2>Soluciones<br />a medida.</h2>
+          </div>
+          <p>No instalamos tecnología por instalarla. Diseñamos cada solución de acuerdo con el problema, el espacio y el objetivo del cliente.</p>
+        </div>
+        <div class="services">
+          <article class="service"><div class="icon">01</div><h3>IoT & Embedded</h3><p>ESP32, Arduino, sensores, WiFi, MQTT, control, monitoreo y firmware.</p></article>
+          <article class="service"><div class="icon">02</div><h3>Programación</h3><p>C, C++, Python y herramientas para integrar hardware, lógica y datos.</p></article>
+          <article class="service"><div class="icon">03</div><h3>APIs & Integración</h3><p>Conexión entre dispositivos, aplicaciones, servicios web y plataformas.</p></article>
+          <article class="service"><div class="icon">04</div><h3>Automatización</h3><p>Procesos automáticos para reducir tareas repetitivas y mejorar el control.</p></article>
+          <article class="service"><div class="icon">05</div><h3>Energía Solar</h3><p>Diseño, cálculo, integración y soporte para sistemas fotovoltaicos.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft" id="portfolio">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <div class="kicker">Portafolio</div>
+            <h2>Vista general<br />de capacidades.</h2>
+          </div>
+          <p>Integramos distintas disciplinas para ofrecer soluciones completas: electrónica, software, domótica, automatización y energía solar.</p>
+        </div>
+        <div class="portfolio-highlight">
+          <div class="portfolio-box">
+            <img src="assets/portfolio-general.webp" alt="Póster general del portafolio técnico de SolarTech and Domotics Solutions S.A.S" />
+          </div>
+          <div class="portfolio-box">
+            <div class="bullets">
+              <div class="bullet"><div class="check">✓</div><div><strong>Hardware + Software</strong><p>Integramos hardware, software y control para llevar una solución desde la idea hasta la operación.</p></div></div>
+              <div class="bullet"><div class="check">✓</div><div><strong>Soluciones a medida</strong><p>Diseñamos soluciones a medida para hogares, proyectos técnicos y pequeñas empresas.</p></div></div>
+              <div class="bullet"><div class="check">✓</div><div><strong>Integración completa</strong><p>Documentamos, probamos e integramos cada sistema pensando en confiabilidad y facilidad de uso.</p></div></div>
+              <div class="bullet"><div class="check">✓</div><div><strong>Trabajo flexible</strong><p>Trabajamos de forma presencial o remota según el tipo de proyecto y sus necesidades.</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="white" id="proyectos">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <div class="kicker">Trabajo real</div>
+            <h2>Proyectos que<br />sí has ejecutado.</h2>
+          </div>
+          <p>Una selección de proyectos que refleja nuestras capacidades en domótica, energía solar, control por app/API y automatización de piscinas.</p>
+        </div>
+        <div class="projects-grid">
+          <article class="project">
+            <img class="photo-switch" src="assets/switch-profesional.webp" alt="Interruptor inteligente instalado profesionalmente sobre muro de ladrillo" />
+            <div class="project-body">
+              <small>Domótica</small>
+              <h3>Automatización de iluminación</h3>
+              <p>Instalación y configuración de interruptor inteligente para control de iluminación interior con una presentación más limpia y profesional.</p>
+              <div class="tags"><span class="tag">Switch inteligente</span><span class="tag">Domótica</span><span class="tag">Escenas</span><span class="tag">Confort</span></div>
+            </div>
+          </article>
+
+          <article class="project">
+            <img class="photo-solar" src="assets/solar-profesional.webp" alt="Sistema solar fotovoltaico con inversor, baterías y cableado organizado" />
+            <div class="project-body">
+              <small>Energía Solar</small>
+              <h3>Sistema solar off-grid</h3>
+              <p>Solución fotovoltaica aislada con inversor, banco de baterías y distribución organizada para respaldo y autonomía energética.</p>
+              <div class="tags"><span class="tag">Inversor</span><span class="tag">Baterías</span><span class="tag">Off-grid</span><span class="tag">Solar</span></div>
+            </div>
+          </article>
+
+          <article class="project">
+            <img class="photo-api" src="assets/api-piscina.webp" alt="Dashboard de la app Shelly para controlar piscina automatizada" />
+            <div class="project-body">
+              <small>App & Control Remoto</small>
+              <h3>API para piscina automatizada</h3>
+              <p>Integración y automatización mediante app/dashboard para controlar escenas como modo piscina, modo jacuzzi, luces y llenado del jacuzzi.</p>
+              <div class="tags"><span class="tag">Shelly</span><span class="tag">API</span><span class="tag">Escenas</span><span class="tag">Control remoto</span></div>
+            </div>
+          </article>
+
+          <article class="project">
+            <img class="photo-pool" src="assets/piscina-automatizada.webp" alt="Piscina y jacuzzi automatizados" />
+            <div class="project-body">
+              <small>Automatización de Piscina</small>
+              <h3>Piscina automatizada</h3>
+              <p>Proyecto de automatización para piscina y jacuzzi con control funcional, escenas de uso y una experiencia más cómoda para el usuario.</p>
+              <div class="tags"><span class="tag">Piscina</span><span class="tag">Jacuzzi</span><span class="tag">Automatización</span><span class="tag">Control</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre-mi">
+      <div class="wrap about">
+        <div class="stat">
+          <strong>+10</strong>
+          <span>proyectos y soluciones desarrolladas en electrónica, automatización y energía.</span>
+        </div>
+        <div>
+          <div class="kicker">Sobre mí</div>
+          <h2>Tecnología que termina en algo que funciona.</h2>
+          <p>SolarTech and Domotics Solutions S.A.S desarrolla soluciones tecnológicas que combinan electrónica, programación, IoT, automatización, domótica y energía solar.</p>
+          <p>Nuestro enfoque une hardware y software para resolver necesidades reales: desde domótica y control de iluminación hasta dashboards, automatización de piscinas y soluciones solares.</p>
+          <div class="reasons">
+            <article class="reason"><h3>Visión integral</h3><p>Pensamos la solución completa: componentes, conexión, lógica, control y operación final.</p></article>
+            <article class="reason"><h3>Experiencia práctica</h3><p>El trabajo no se queda en el diseño: también incluye integración, pruebas y puesta en marcha.</p></article>
+            <article class="reason"><h3>Soluciones multidisciplinarias</h3><p>Combinamos electrónica, software y energía para resolver proyectos que requieren varias disciplinas.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="white">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <div class="kicker">Cómo trabajamos</div>
+            <h2>De la idea<br />al sistema.</h2>
+          </div>
+          <p>Un proceso simple y profesional para entender el problema, diseñar la solución y llevarla a la práctica.</p>
+        </div>
+        <div class="process">
+          <div class="step"><small>01</small><h3>Entender</h3><p>Revisamos el objetivo, el contexto y la necesidad concreta del cliente.</p></div>
+          <div class="step"><small>02</small><h3>Diseñar</h3><p>Definimos arquitectura, componentes, alcance, tiempos y entregables.</p></div>
+          <div class="step"><small>03</small><h3>Construir</h3><p>Desarrollo, programación, montaje, integración y pruebas según el proyecto.</p></div>
+          <div class="step"><small>04</small><h3>Entregar</h3><p>La solución queda lista para usar, escalar o seguir mejorando.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contacto">
+      <div class="contact-grid">
+        <div>
+          <div class="kicker" style="color:var(--green)">¿Tienes un proyecto?</div>
+          <h2>Cuéntanos qué necesitas construir.</h2>
+          <p>Describe tu idea, necesidad o proceso. Puedes escribirnos directamente o completar el formulario para abrir una solicitud detallada por WhatsApp.</p>
+          <div class="contact-list">
+            <a class="contact-chip" href="mailto:solartechanddomoticssolutions@gmail.com"><span>📩</span><div><strong>Correo</strong><br><span>solartechanddomoticssolutions@gmail.com</span></div></a>
+            <a class="contact-chip" href="https://wa.me/573218460307?text=Hola%20SolarTech%2C%20quiero%20consultar%20sobre%20un%20proyecto." target="_blank" rel="noopener"><span>📱</span><div><strong>WhatsApp</strong><br><span>+57 321 846 0307</span></div></a>
+            <a class="contact-chip" href="https://www.linkedin.com/in/miguel-angel-guarin-nieto-8122bb215/" target="_blank" rel="noopener"><span>🔗</span><div><strong>LinkedIn</strong><br><span>Miguel Ángel Guarín Nieto</span></div></a>
+            <div class="contact-chip"><span>🌎</span><div><strong>Modalidad</strong><br><span>Proyectos presenciales y remotos</span></div></div>
+          </div>
+        </div>
+        <form class="form" id="projectForm">
+          <input id="clientName" required placeholder="Tu nombre" autocomplete="name" />
+          <input id="clientEmail" required type="email" placeholder="Tu correo" autocomplete="email" />
+          <input id="clientPhone" type="tel" placeholder="Tu WhatsApp / teléfono (opcional)" autocomplete="tel" />
+          <select id="serviceType" required>
+            <option value="">¿Qué necesitas?</option>
+            <option>ESP32 / Arduino / IoT</option>
+            <option>Programación / Python / C++</option>
+            <option>APIs / Integraciones</option>
+            <option>Domótica / Automatización</option>
+            <option>Energía solar</option>
+            <option>Automatización de piscina / jacuzzi</option>
+            <option>Otro proyecto</option>
+          </select>
+          <textarea id="projectMessage" required placeholder="Cuéntanos brevemente sobre tu proyecto..."></textarea>
+          <button class="send" type="submit">Enviar solicitud por WhatsApp →</button>
+          <div class="form-note">Al enviar, se abrirá WhatsApp con tu solicitud preparada. La página no almacena tus datos.</div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div><b>SOLARTECH AND DOMOTICS SOLUTIONS S.A.S</b><br>Electrónica · Programación · IoT · APIs · Domótica · Automatización · Energía Solar</div>
+      <div class="footer-links">
+        <a href="mailto:solartechanddomoticssolutions@gmail.com">Correo</a>
+        <a href="https://wa.me/573218460307" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://www.linkedin.com/in/miguel-angel-guarin-nieto-8122bb215/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/573218460307?text=Hola%20SolarTech%2C%20quiero%20consultar%20sobre%20un%20proyecto." target="_blank" rel="noopener" aria-label="Contactar SolarTech por WhatsApp"><span class="wa-dot"></span> WhatsApp</a>
+
+  <script>
+    document.getElementById('projectForm').addEventListener('submit', function(event){
+      event.preventDefault();
+      const name = document.getElementById('clientName').value.trim();
+      const email = document.getElementById('clientEmail').value.trim();
+      const phone = document.getElementById('clientPhone').value.trim();
+      const service = document.getElementById('serviceType').value;
+      const message = document.getElementById('projectMessage').value.trim();
+
+      const lines = [
+        'Hola SolarTech, quiero solicitar información sobre un proyecto.',
+        '',
+        'Nombre: ' + name,
+        'Correo: ' + email,
+        phone ? 'Teléfono/WhatsApp: ' + phone : '',
+        'Servicio: ' + service,
+        '',
+        'Descripción:',
+        message
+      ].filter(Boolean);
+
+      const url = 'https://wa.me/573218460307?text=' + encodeURIComponent(lines.join('\n'));
+      window.open(url, '_blank', 'noopener');
+    });
+  </script>
+</body>
+</html>
