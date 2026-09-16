@@ -119,6 +119,11 @@ summary small { color: var(--muted); font-size: .9rem; }
 .details-content p, .details-content ul { margin: 0; }
 .details-content li + li { margin-top: 8px; }
 .inline-button { display: inline-flex; margin-top: 15px; padding: 9px 15px; border-radius: 999px; color: var(--white); background: var(--forest); font-weight: 700; text-decoration: none; }
+.wifi-credentials { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.wifi-credentials div { padding: 15px 16px; border: 1px solid rgba(91,66,51,.16); border-radius: 13px; background: rgba(248,239,228,.68); }
+.wifi-credentials span, .wifi-credentials strong { display: block; overflow-wrap: anywhere; }
+.wifi-credentials span { color: var(--muted); font-size: .78rem; font-weight: 800; text-transform: uppercase; }
+.wifi-credentials strong { margin-top: 3px; color: var(--forest); font-size: 1.02rem; }
 
 .rules-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 .rules-grid article { min-height: 170px; padding: 24px; border: 1px solid rgba(91,66,51,.13); border-radius: 20px; background: rgba(248,239,228,.7); }
@@ -133,6 +138,14 @@ summary small { color: var(--muted); font-size: .9rem; }
 .place-grid span { color: var(--gold); font-size: .78rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .place-grid h3 { margin-top: 12px; font-size: 1.7rem; }
 .place-grid p { color: rgba(255,255,255,.72); }
+.restaurant-heading { max-width: 760px; margin: 72px 0 30px; }
+.restaurant-heading > p:last-child { color: var(--muted); }
+.restaurant-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.restaurant-grid article { padding: 25px; border: 1px solid rgba(91,66,51,.14); border-radius: 20px; background: rgba(248,239,228,.72); }
+.restaurant-grid span { color: #8d651f; font-size: .76rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.restaurant-grid h3 { margin-top: 8px; }
+.restaurant-grid p { color: var(--muted); }
+.restaurant-grid a { color: var(--leaf); font-weight: 800; }
 
 .checklist { display: grid; gap: 10px; max-width: 850px; margin-bottom: 26px; }
 .checklist label { display: flex; gap: 13px; align-items: flex-start; padding: 17px 18px; border: 1px solid rgba(91,66,51,.14); border-radius: 14px; background: rgba(248,239,228,.66); cursor: pointer; }
@@ -155,6 +168,7 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 25px
   .quick-actions { grid-template-columns: 1fr; margin-top: -30px; }
   .rules-grid { grid-template-columns: 1fr 1fr; }
   .place-grid { grid-template-columns: 1fr; }
+  .restaurant-grid { grid-template-columns: 1fr; }
   .emergency { grid-template-columns: 1fr; gap: 34px; }
 }
 
@@ -171,6 +185,7 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 25px
   .quick-actions a { padding: 16px 18px; }
   .content-section { padding: 72px 20px; }
   .time-grid { grid-template-columns: 1fr 1fr; }
+  .wifi-credentials { grid-template-columns: 1fr; }
   .info-card { grid-template-columns: 44px minmax(0, 1fr); gap: 13px; padding: 19px 17px; }
   .step-number { width: 42px; height: 42px; }
   .rules-grid { grid-template-columns: 1fr; }
