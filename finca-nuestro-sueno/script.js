@@ -1,6 +1,71 @@
 const form = document.querySelector("#whatsapp-form");
 const checkIn = document.querySelector("#check-in");
 const checkOut = document.querySelector("#check-out");
+const siteHeader = document.querySelector(".site-header");
+const navToggle = document.querySelector(".nav-toggle");
+const pageSections = [...document.querySelectorAll("[data-page]")];
+const tabLinks = [...document.querySelectorAll("[data-tab]")];
+const validPages = new Set(["inicio", "finca", "habitaciones", "galeria", "tienda", "reservar"]);
+const pageTitles = {
+  inicio: "Finca Nuestro Sueño | Quimbaya, Quindío",
+  finca: "La finca | Nuestro Sueño",
+  habitaciones: "Habitaciones | Nuestro Sueño",
+  galeria: "Galería | Nuestro Sueño",
+  tienda: "Tienda | Nuestro Sueño",
+  reservar: "Reservar | Nuestro Sueño"
+};
+const pageAliases = { experiencias: "finca", ubicacion: "finca", contacto: "reservar" };
+
+const activatePage = (page, shouldScroll = true) => {
+  const resolvedPage = pageAliases[page] || page;
+  const selectedPage = validPages.has(resolvedPage) ? resolvedPage : "inicio";
+
+  pageSections.forEach((section) => {
+    section.classList.toggle("active-page", section.dataset.page === selectedPage);
+  });
+
+  tabLinks.forEach((link) => {
+    if (link.closest("nav")) {
+      if (link.dataset.tab === selectedPage) link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
+    }
+  });
+
+  document.title = pageTitles[selectedPage];
+  siteHeader.classList.remove("menu-open");
+  navToggle.setAttribute("aria-expanded", "false");
+  navToggle.setAttribute("aria-label", "Abrir menú");
+
+  if (shouldScroll) {
+    window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  }
+};
+
+tabLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const page = link.dataset.tab;
+    if (!validPages.has(page)) return;
+    event.preventDefault();
+    if (window.location.hash === `#${page}`) activatePage(page);
+    else window.location.hash = page;
+  });
+});
+
+navToggle.addEventListener("click", () => {
+  const isOpen = siteHeader.classList.toggle("menu-open");
+  navToggle.setAttribute("aria-expanded", String(isOpen));
+  navToggle.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
+});
+
+document.addEventListener("click", (event) => {
+  if (!siteHeader.contains(event.target)) {
+    siteHeader.classList.remove("menu-open");
+    navToggle.setAttribute("aria-expanded", "false");
+  }
+});
+
+window.addEventListener("hashchange", () => activatePage(window.location.hash.slice(1)));
+activatePage(window.location.hash.slice(1), false);
 
 const today = new Date();
 const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().split("T")[0];
