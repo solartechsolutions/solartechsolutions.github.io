@@ -5,13 +5,14 @@ const siteHeader = document.querySelector(".site-header");
 const navToggle = document.querySelector(".nav-toggle");
 const pageSections = [...document.querySelectorAll("[data-page]")];
 const tabLinks = [...document.querySelectorAll("[data-tab]")];
-const validPages = new Set(["inicio", "finca", "habitaciones", "galeria", "tienda", "reservar"]);
+const validPages = new Set(["inicio", "finca", "habitaciones", "galeria", "tienda", "transporte", "reservar"]);
 const pageTitles = {
   inicio: "Finca Nuestro Sueño | Quimbaya, Quindío",
   finca: "La finca | Nuestro Sueño",
   habitaciones: "Habitaciones | Nuestro Sueño",
   galeria: "Galería | Nuestro Sueño",
   tienda: "Tienda | Nuestro Sueño",
+  transporte: "Transporte | Nuestro Sueño",
   reservar: "Reservar | Nuestro Sueño"
 };
 const pageAliases = { experiencias: "finca", ubicacion: "finca", contacto: "reservar" };
@@ -71,6 +72,8 @@ const today = new Date();
 const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().split("T")[0];
 checkIn.min = localToday;
 checkOut.min = localToday;
+const transportDate = document.querySelector("#transport-date");
+transportDate.min = localToday;
 
 checkIn.addEventListener("change", () => {
   checkOut.min = checkIn.value || localToday;
@@ -185,3 +188,32 @@ sendOrder.addEventListener("click", () => {
 });
 
 updateOrderSummary();
+
+const transportForm = document.querySelector("#transport-form");
+
+transportForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const name = document.querySelector("#transport-name").value.trim();
+  const pickup = document.querySelector("#pickup-place").value.trim();
+  const destination = document.querySelector("#transport-destination").value.trim();
+  const date = transportDate.value;
+  const time = document.querySelector("#transport-time").value;
+  const passengers = document.querySelector("#transport-passengers").value;
+  const note = document.querySelector("#transport-note").value.trim() || "Sin información adicional";
+
+  const text = [
+    "Hola, quiero solicitar un servicio de transporte relacionado con Finca Nuestro Sueño.",
+    "",
+    `Nombre: ${name}`,
+    `Lugar de recogida: ${pickup}`,
+    `Destino: ${destination}`,
+    `Fecha: ${date}`,
+    `Hora deseada: ${time}`,
+    `Pasajeros: ${passengers}`,
+    `Información adicional: ${note}`,
+    "",
+    "¿Me confirman por favor la disponibilidad y el valor del servicio?"
+  ].join("\n");
+
+  window.open(`https://wa.me/573218460307?text=${encodeURIComponent(text)}`, "_blank", "noopener");
+});

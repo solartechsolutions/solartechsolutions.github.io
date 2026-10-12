@@ -26,6 +26,7 @@
         <a href="#habitaciones" data-tab="habitaciones">Habitaciones</a>
         <a href="#galeria" data-tab="galeria">Galería</a>
         <a href="#tienda" data-tab="tienda">Tienda</a>
+        <a href="#transporte" data-tab="transporte">Transporte</a>
         <a href="#reservar" data-tab="reservar">Reservar</a>
       </nav>
       <a class="header-cta" href="#reservar" data-tab="reservar">Consultar disponibilidad</a>
@@ -201,6 +202,46 @@
             <p class="stock-note"><strong>Compra sin riesgo:</strong> no realizas pagos en esta página. Primero confirmamos la existencia y luego coordinamos contigo el pago y la entrega.</p>
           </aside>
         </div>
+      </section>
+
+      <section class="transport section-shell" id="transporte" data-page="transporte">
+        <div class="transport-intro">
+          <p class="eyebrow dark">Muévete con tranquilidad</p>
+          <h2>Transporte desde la finca hacia tu próximo destino</h2>
+          <p>Si no cuentas con vehículo o quieres visitar los parques y atractivos del Eje Cafetero, envíanos tu recorrido y la hora deseada. Te ayudaremos a coordinar el transporte.</p>
+
+          <div class="route-visual" aria-hidden="true">
+            <span class="route-point"></span>
+            <span class="route-line"></span>
+            <span class="route-point"></span>
+            <div><strong>Tu ubicación</strong><small>Recogida</small></div>
+            <div><strong>Tu destino</strong><small>Parque, pueblo o aeropuerto</small></div>
+          </div>
+
+          <ul class="transport-notes">
+            <li>Recogida en la finca o en otra ubicación</li>
+            <li>Traslados a parques y destinos turísticos</li>
+            <li>Disponibilidad y valor confirmados por WhatsApp</li>
+          </ul>
+        </div>
+
+        <form class="transport-form" id="transport-form">
+          <div class="form-heading">
+            <span>Solicitud de transporte</span>
+            <h3>Cuéntanos tu recorrido</h3>
+          </div>
+          <label>Nombre completo<input id="transport-name" type="text" autocomplete="name" required placeholder="¿Cómo te llamas?" /></label>
+          <label>Lugar de recogida<input id="pickup-place" type="text" required placeholder="Ej.: Finca Nuestro Sueño" /></label>
+          <label>Destino<input id="transport-destination" type="text" required placeholder="Ej.: Parque del Café" /></label>
+          <div class="form-row">
+            <label>Fecha del viaje<input id="transport-date" type="date" required /></label>
+            <label>Hora deseada<input id="transport-time" type="time" required /></label>
+          </div>
+          <label>Número de pasajeros<input id="transport-passengers" type="number" min="1" max="16" required placeholder="1–16" /></label>
+          <label>Información adicional<textarea id="transport-note" rows="3" placeholder="Equipaje, regreso, paradas u otro detalle"></textarea></label>
+          <button class="button transport-button" type="submit">Solicitar transporte por WhatsApp</button>
+          <p class="privacy-note">Esta solicitud no genera cobros ni confirma automáticamente el servicio. Coordinaremos contigo por WhatsApp.</p>
+        </form>
       </section>
 
       <section class="booking section-shell" id="reservar" data-page="reservar">
