@@ -39,17 +39,17 @@ const siteHeader = document.querySelector(".site-header");
 const navToggle = document.querySelector(".nav-toggle");
 const pageSections = [...document.querySelectorAll("[data-page]")];
 const tabLinks = [...document.querySelectorAll("[data-tab]")];
-const validPages = new Set(["inicio", "finca", "habitaciones", "galeria", "tienda", "transporte", "reservar"]);
+const validPages = new Set(["inicio", "finca", "espacios", "galeria", "tienda", "transporte", "reservar"]);
 const pageTitles = {
   inicio: "Finca Nuestro Sueño | Quimbaya, Quindío",
   finca: "La finca | Nuestro Sueño",
-  habitaciones: "Habitaciones | Nuestro Sueño",
+  espacios: "Espacios de la finca | Nuestro Sueño",
   galeria: "Galería | Nuestro Sueño",
   tienda: "Tienda | Nuestro Sueño",
   transporte: "Transporte | Nuestro Sueño",
   reservar: "Reservar | Nuestro Sueño"
 };
-const pageAliases = { experiencias: "finca", ubicacion: "finca", contacto: "reservar" };
+const pageAliases = { habitaciones: "espacios", "zona-descanso": "espacios", "zona-interiores": "espacios", "zona-exteriores": "espacios", experiencias: "finca", ubicacion: "finca", contacto: "reservar" };
 
 const activatePage = (page, shouldScroll = true) => {
   const resolvedPage = pageAliases[page] || page;
@@ -72,7 +72,9 @@ const activatePage = (page, shouldScroll = true) => {
   navToggle.setAttribute("aria-label", "Abrir menú");
 
   if (shouldScroll) {
-    window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    const target = page.startsWith("zona-") ? document.getElementById(page) : null;
+    if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    else window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   }
 };
 
