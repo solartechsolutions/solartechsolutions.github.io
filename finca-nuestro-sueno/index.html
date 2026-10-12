@@ -21,6 +21,7 @@
         <a href="#finca">La finca</a>
         <a href="#habitaciones">Habitaciones</a>
         <a href="#galeria">Galería</a>
+        <a href="#tienda">Tienda</a>
         <a href="#ubicacion">Ubicación</a>
       </nav>
       <a class="header-cta" href="#reservar">Consultar disponibilidad</a>
@@ -131,6 +132,71 @@
           <a class="button map-button" href="https://maps.app.goo.gl/s5jWgR7J7o9FWoCL9" target="_blank" rel="noopener">Abrir ubicación en Google Maps</a>
         </div>
         <div class="location-visual" aria-hidden="true"><span>Quimbaya</span><small>Quindío · Colombia</small></div>
+      </section>
+
+      <section class="shop section-shell" id="tienda">
+        <div class="shop-heading">
+          <div>
+            <p class="eyebrow dark">Tienda Nuestro Sueño</p>
+            <h2>Lleva contigo un pedacito del Quindío</h2>
+          </div>
+          <p>Elige tus productos y cantidades. Antes de realizar cualquier pago, confirmamos existencias y coordinamos tu compra directamente por WhatsApp.</p>
+        </div>
+
+        <div class="shop-layout">
+          <div class="product-grid">
+            <article class="product-card" data-product="pocillos" data-price="20000" data-label="Pocillo Nuestro Sueño">
+              <div class="product-image-wrap">
+                <img src="./assets/pocillos-nuestro-sueno.webp" alt="Pocillos personalizados de Finca Nuestro Sueño con paisajes del Quindío" loading="lazy" />
+                <span class="product-badge">Recuerdo de la finca</span>
+              </div>
+              <div class="product-info">
+                <p class="product-kicker">Artesanía con identidad</p>
+                <h3>Pocillo Nuestro Sueño</h3>
+                <p class="product-description">Un recuerdo especial inspirado en los paisajes, el café y la naturaleza del Quindío.</p>
+                <div class="product-buy-row">
+                  <p class="product-price"><strong>$20.000</strong><span>COP · unidad</span></p>
+                  <div class="quantity-control" aria-label="Cantidad de pocillos">
+                    <button type="button" class="quantity-button" data-action="decrease" aria-label="Quitar un pocillo">−</button>
+                    <input class="quantity-input" type="number" min="0" max="20" step="1" value="0" inputmode="numeric" aria-label="Cantidad de pocillos" />
+                    <button type="button" class="quantity-button" data-action="increase" aria-label="Agregar un pocillo">+</button>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card" data-product="cafe" data-price="25000" data-label="Café Nuestro Sueño de 250 g">
+              <div class="product-image-wrap">
+                <img src="./assets/cafe-nuestro-sueno-250g.webp" alt="Café Nuestro Sueño en presentación de 250 gramos" loading="lazy" />
+                <span class="product-badge">Café de origen</span>
+              </div>
+              <div class="product-info">
+                <p class="product-kicker">Aroma del Quindío</p>
+                <h3>Café Nuestro Sueño</h3>
+                <p class="product-description">Café de origen en presentación de 250 g para recordar la esencia cafetera de tu visita.</p>
+                <div class="product-buy-row">
+                  <p class="product-price"><strong>$25.000</strong><span>COP · 250 g</span></p>
+                  <div class="quantity-control" aria-label="Cantidad de cafés">
+                    <button type="button" class="quantity-button" data-action="decrease" aria-label="Quitar un café">−</button>
+                    <input class="quantity-input" type="number" min="0" max="20" step="1" value="0" inputmode="numeric" aria-label="Cantidad de cafés" />
+                    <button type="button" class="quantity-button" data-action="increase" aria-label="Agregar un café">+</button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <aside class="order-summary" aria-live="polite">
+            <p class="eyebrow">Tu pedido</p>
+            <h3>Resumen de compra</h3>
+            <div class="order-lines" id="order-lines">
+              <p class="empty-order">Aún no has agregado productos.</p>
+            </div>
+            <div class="order-total"><span>Total estimado</span><strong id="order-total">$0 COP</strong></div>
+            <button class="button order-button" id="send-order" type="button" disabled>Solicitar por WhatsApp</button>
+            <p class="stock-note"><strong>Compra sin riesgo:</strong> no realizas pagos en esta página. Primero confirmamos la existencia y luego coordinamos contigo el pago y la entrega.</p>
+          </aside>
+        </div>
       </section>
 
       <section class="booking section-shell" id="reservar">
