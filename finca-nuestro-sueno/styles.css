@@ -290,13 +290,35 @@ textarea { resize: vertical; }
 input:focus, select:focus, textarea:focus { outline: 3px solid rgba(45,89,72,.18); border-color: var(--leaf); }
 .submit-button { width: 100%; border: 0; color: var(--white); background: var(--forest); cursor: pointer; }
 .privacy-note { margin: 12px 0 0; color: #705e51; font-size: .8rem; text-align: center; }
-.whatsapp-float { position: fixed; z-index: 30; right: 20px; bottom: 20px; display: grid; width: 58px; height: 58px; place-items: center; border: 3px solid var(--white); border-radius: 50%; color: var(--white); background: #1f9d55; box-shadow: 0 10px 28px rgba(0,0,0,.25); font-size: .82rem; font-weight: 800; text-decoration: none; }
+.social-float { position: fixed; z-index: 30; right: 20px; bottom: 20px; display: flex; flex-direction: column; gap: 12px; }
+.whatsapp-float, .instagram-float { display: grid; width: 54px; height: 54px; place-items: center; border: 2px solid var(--almond); border-radius: 50%; color: white; box-shadow: 0 8px 22px rgba(0,0,0,.24); text-decoration: none; transition: transform .2s ease; }
+.whatsapp-float { background: #1f9d55; }
+.instagram-float { background: linear-gradient(145deg, #633ab4, #c53b72, #da9344); }
+.social-float a:hover { transform: translateY(-3px); }
+.social-float svg { width: 29px; height: 29px; }
+.parks { background: linear-gradient(150deg, #d6b99a, #eadcc9 45%, #c9ab89); }
+.ticket-price-notice { margin: 0 0 36px; padding: 20px 24px; border-left: 3px solid var(--caramel); border-radius: 0 16px 16px 0; background: rgba(248,239,228,.7); color: var(--mocha); font-size: .86rem; }
+.park-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.park-card { overflow: hidden; border: 1px solid rgba(91,66,51,.15); border-radius: 24px; background: var(--almond); box-shadow: 0 15px 35px rgba(67,44,29,.1); }
+.park-cover { display: flex; flex-direction: column; gap: 16px; align-items: center; justify-content: center; padding: 30px 20px; color: var(--gold); background: radial-gradient(circle at top right, #406451, transparent), var(--forest-deep); }
+.park-cover span { font-size: 3rem; }
+.park-cover small { font-size: .8rem; letter-spacing: .07em; }
+.park-info { padding: 26px; display: flex; flex-direction: column; }
+.park-info h3 { margin: 0; font: 600 1.65rem/1.2 "Playfair Display", serif; }
+.park-info > p { color: var(--mocha); }
+.park-prices { margin: 8px 0; }
+.park-prices div { display: flex; justify-content: space-between; gap: 14px; padding: 12px 0; border-bottom: 1px solid #cbb192; font-size: .88rem; }
+.park-prices dd { margin: 0; color: var(--forest); font-weight: 700; white-space: nowrap; }
+.park-condition { font-size: .78rem; }
+.park-source { font-size: .76rem; color: var(--leaf); margin-bottom: 20px; }
+.park-request { border: 0; color: white; background: var(--forest); cursor: pointer; font: 700 .9rem "DM Sans", sans-serif; }
+.ticket-consultation { display: grid; grid-template-columns: .8fr 1.2fr; align-items: start; gap: 60px; margin-top: 80px; scroll-margin-top: 110px; }
 
-@media (max-width: 1240px) {
+@media (max-width: 1440px) {
   .header-cta { display: none; }
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1180px) {
   .header-cta { display: none; }
   .site-header { padding: 14px 20px; }
   .nav-toggle { display: block; margin-left: auto; }
@@ -310,7 +332,8 @@ input:focus, select:focus, textarea:focus { outline: 3px solid rgba(45,89,72,.18
   .hero-facts { left: 20px; right: 20px; bottom: 24px; justify-content: space-between; gap: 10px; }
   .intro, .contact-band { grid-template-columns: 1fr; }
   .intro-image { max-width: 560px; }
-  .section-heading, .shop-heading, .experiences, .location, .transport, .booking { grid-template-columns: 1fr; }
+  .section-heading, .shop-heading, .experiences, .location, .transport, .booking, .ticket-consultation { grid-template-columns: 1fr; }
+  .park-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .shop-layout { grid-template-columns: 1fr; }
   .order-summary { position: static; }
   .room-grid, .space-grid { grid-template-columns: 1fr 1fr; }
@@ -319,6 +342,8 @@ input:focus, select:focus, textarea:focus { outline: 3px solid rgba(45,89,72,.18
   .location-visual { min-height: 500px; }
 }
 @media (max-width: 540px) {
+  .park-grid { grid-template-columns: 1fr; }
+  .ticket-consultation { gap: 32px; }
   h1 { font-size: 3rem; }
   .hero-content { padding-top: 155px; }
   .hero-copy { margin: 20px 0 26px; }

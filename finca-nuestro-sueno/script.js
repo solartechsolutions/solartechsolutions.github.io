@@ -39,17 +39,18 @@ const siteHeader = document.querySelector(".site-header");
 const navToggle = document.querySelector(".nav-toggle");
 const pageSections = [...document.querySelectorAll("[data-page]")];
 const tabLinks = [...document.querySelectorAll("[data-tab]")];
-const validPages = new Set(["inicio", "finca", "espacios", "galeria", "tienda", "transporte", "reservar"]);
+const validPages = new Set(["inicio", "finca", "espacios", "galeria", "parques", "tienda", "transporte", "reservar"]);
 const pageTitles = {
   inicio: "Finca Nuestro Sueño | Quimbaya, Quindío",
   finca: "La finca | Nuestro Sueño",
   espacios: "Espacios de la finca | Nuestro Sueño",
   galeria: "Galería | Nuestro Sueño",
+  parques: "Parques y boletas | Nuestro Sueño",
   tienda: "Tienda | Nuestro Sueño",
   transporte: "Transporte | Nuestro Sueño",
   reservar: "Reservar | Nuestro Sueño"
 };
-const pageAliases = { habitaciones: "espacios", "zona-descanso": "espacios", "zona-interiores": "espacios", "zona-exteriores": "espacios", experiencias: "finca", ubicacion: "finca", contacto: "reservar" };
+const pageAliases = { "solicitar-boletas": "parques", habitaciones: "espacios", "zona-descanso": "espacios", "zona-interiores": "espacios", "zona-exteriores": "espacios", experiencias: "finca", ubicacion: "finca", contacto: "reservar" };
 
 const activatePage = (page, shouldScroll = true) => {
   const resolvedPage = pageAliases[page] || page;
@@ -72,7 +73,7 @@ const activatePage = (page, shouldScroll = true) => {
   navToggle.setAttribute("aria-label", "Abrir menú");
 
   if (shouldScroll) {
-    const target = page.startsWith("zona-") ? document.getElementById(page) : null;
+    const target = page.startsWith("zona-") || page === "solicitar-boletas" ? document.getElementById(page) : null;
     if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
     else window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   }
@@ -110,6 +111,40 @@ checkIn.min = localToday;
 checkOut.min = localToday;
 const transportDate = document.querySelector("#transport-date");
 transportDate.min = localToday;
+const ticketDate = document.querySelector("#ticket-date");
+ticketDate.min = localToday;
+document.querySelectorAll("[data-park]").forEach((button) => button.addEventListener("click", () => {
+  document.querySelector("#ticket-park").value = button.dataset.park;
+  document.querySelector("#solicitar-boletas").scrollIntoView({ behavior: "smooth", block: "start" });
+  document.querySelector("#ticket-name").focus({ preventScroll: true });
+}));
+document.querySelector("#tickets-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const adults = Number(document.querySelector("#ticket-adults").value);
+  const children = Number(document.querySelector("#ticket-children").value);
+  const adultInput = document.querySelector("#ticket-adults");
+  if (adults + children < 1) {
+    adultInput.setCustomValidity("Indica al menos un visitante.");
+    adultInput.reportValidity();
+    return;
+  }
+  adultInput.setCustomValidity("");
+  const park = document.querySelector("#ticket-park");
+  const text = [
+    "Hola, quiero conseguir boletas o recibir asesoría con Nuestro Sueño.",
+    "",
+    "Nombre: " + document.querySelector("#ticket-name").value.trim(),
+    "Parque: " + park.options[park.selectedIndex].text,
+    "Fecha de visita: " + ticketDate.value,
+    "Adultos: " + adults,
+    "Niños: " + children,
+    "Pasaporte y detalles: " + (document.querySelector("#ticket-note").value.trim() || "Necesito asesoría"),
+    "",
+    "¿Me confirmas el precio final, las inclusiones y la disponibilidad antes de pagar?"
+  ].join("\n");
+  window.open("https://wa.me/573218460307?text=" + encodeURIComponent(text), "_blank", "noopener");
+});
+["#ticket-adults", "#ticket-children"].forEach((selector) => document.querySelector(selector).addEventListener("input", () => document.querySelector("#ticket-adults").setCustomValidity("")));
 
 checkIn.addEventListener("change", () => {
   checkOut.min = checkIn.value || localToday;
