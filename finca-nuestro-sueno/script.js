@@ -1,4 +1,38 @@
 const form = document.querySelector("#whatsapp-form");
+const galleryPhotos = [...document.querySelectorAll(".gallery-photo")];
+const galleryFilters = [...document.querySelectorAll("[data-filter]")];
+const photoViewer = document.querySelector("#photo-viewer");
+let visiblePhotos = galleryPhotos;
+let viewerIndex = 0;
+const showPhoto = (index) => {
+  viewerIndex = (index + visiblePhotos.length) % visiblePhotos.length;
+  const photo = visiblePhotos[viewerIndex].querySelector("img");
+  const viewerImage = document.querySelector("#viewer-image");
+  viewerImage.src = photo.src;
+  viewerImage.alt = photo.alt;
+  document.querySelector("#viewer-caption").textContent = photo.alt + " · " + (viewerIndex + 1) + "/" + visiblePhotos.length;
+};
+galleryFilters.forEach((button) => button.addEventListener("click", () => {
+  galleryFilters.forEach((filter) => filter.setAttribute("aria-pressed", String(filter === button)));
+  visiblePhotos = galleryPhotos.filter((photo) => button.dataset.filter === "all" || photo.dataset.category === button.dataset.filter);
+  galleryPhotos.forEach((photo) => { photo.hidden = !visiblePhotos.includes(photo); });
+}));
+galleryPhotos.forEach((photo) => photo.addEventListener("click", () => {
+  showPhoto(visiblePhotos.indexOf(photo));
+  photoViewer.showModal();
+}));
+document.querySelector(".viewer-close").addEventListener("click", () => photoViewer.close());
+document.querySelector("#viewer-prev").addEventListener("click", () => showPhoto(viewerIndex - 1));
+document.querySelector("#viewer-next").addEventListener("click", () => showPhoto(viewerIndex + 1));
+photoViewer.addEventListener("click", (event) => { if (event.target === photoViewer) photoViewer.close(); });
+photoViewer.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowLeft") { event.preventDefault(); showPhoto(viewerIndex - 1); }
+  if (event.key === "ArrowRight") { event.preventDefault(); showPhoto(viewerIndex + 1); }
+});
+document.querySelectorAll("[data-coffee-view]").forEach((button) => button.addEventListener("click", () => {
+  document.querySelector(".coffee-main-photo").src = "./assets/" + button.dataset.coffeeView + ".webp";
+  document.querySelectorAll("[data-coffee-view]").forEach((view) => view.setAttribute("aria-pressed", String(view === button)));
+}));
 const checkIn = document.querySelector("#check-in");
 const checkOut = document.querySelector("#check-out");
 const siteHeader = document.querySelector(".site-header");

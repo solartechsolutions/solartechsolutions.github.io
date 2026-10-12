@@ -67,7 +67,7 @@
           </ul>
         </div>
         <figure class="intro-image">
-          <img src="./assets/finca-dia.webp" alt="Vista diurna de la casa y las zonas verdes de Finca Nuestro Sueño" />
+          <img src="./assets/finca-jardin.webp" alt="Casa, jardín y trampolín de Finca Nuestro Sueño durante el día" />
           <figcaption>Una finca privada rodeada de naturaleza</figcaption>
         </figure>
       </section>
@@ -90,7 +90,7 @@
             <div><span>Habitación 2 · Planta alta</span><h3>Habitación familiar con balcón</h3><p>Dos camas, un nicho adicional y balcón con vista a toda la casa.</p></div>
           </article>
           <article class="room-card">
-            <img src="./assets/IMG_7272.webp" alt="Habitación temática iluminada en tonos azules" loading="lazy" />
+            <img src="./assets/habitacion-luna.webp" alt="Habitación azul con decoración de luna y estrellas" loading="lazy" />
             <div><span>Habitación 3</span><h3>Ambiente acogedor</h3><p>Una habitación con cama y un ambiente especial para descansar.</p></div>
           </article>
         </div>
@@ -117,16 +117,35 @@
           <div><p class="eyebrow dark">Conoce Nuestro Sueño</p><h2>Un vistazo a tu próxima escapada</h2></div>
           <p>Explora los espacios interiores, las zonas verdes y los rincones pensados para disfrutar en grupo.</p>
         </div>
-        <div class="gallery-grid">
-          <figure class="gallery-wide"><img src="./assets/IMG_7375.webp" alt="Vista nocturna exterior de la finca" loading="lazy" /></figure>
-          <figure class="gallery-tall"><img src="./assets/IMG_6463.webp" alt="Piscina, jacuzzi y paisaje natural durante el día" loading="lazy" /></figure>
-          <figure><img src="./assets/IMG_6658.webp" alt="Sala de la finca" loading="lazy" /></figure>
-          <figure><img src="./assets/IMG_0445.webp" alt="Comedor para compartir en grupo" loading="lazy" /></figure>
-          <figure><img src="./assets/IMG_0443.webp" alt="Cocina equipada" loading="lazy" /></figure>
-          <figure class="gallery-wide"><img src="./assets/IMG_7275.webp" alt="Zona de entretenimiento con mesa de ping-pong" loading="lazy" /></figure>
-          <figure><img src="./assets/IMG_0441.webp" alt="Baño con ducha" loading="lazy" /></figure>
-          <figure><img src="./assets/IMG_6451.webp" alt="Zona cubierta y parqueadero de la finca" loading="lazy" /></figure>
+        <div class="gallery-filters" aria-label="Filtrar fotografías">
+          <button type="button" data-filter="all" aria-pressed="true">Todas</button>
+          <button type="button" data-filter="exteriores" aria-pressed="false">Casa y naturaleza</button>
+          <button type="button" data-filter="piscina" aria-pressed="false">Piscina y jacuzzi</button>
+          <button type="button" data-filter="interiores" aria-pressed="false">Interiores</button>
+          <button type="button" data-filter="actividades" aria-pressed="false">Diversión</button>
         </div>
+        <p class="gallery-hint">Toca una fotografía para verla en detalle.</p>
+        <div class="gallery-grid curated-gallery">
+          <button class="gallery-photo" type="button" data-category="exteriores" aria-label="Ampliar: La casa y el jardín durante el día"><img src="./assets/finca-jardin.webp" alt="La casa y el jardín durante el día" loading="lazy" /><span>La casa y el jardín durante el día</span></button>
+          <button class="gallery-photo" type="button" data-category="piscina" aria-label="Ampliar: Piscina iluminada al atardecer"><img src="./assets/piscina-atardecer.webp" alt="Piscina iluminada al atardecer" loading="lazy" /><span>Piscina iluminada al atardecer</span></button>
+          <button class="gallery-photo" type="button" data-category="exteriores" aria-label="Ampliar: Nuestro Sueño al caer la tarde"><img src="./assets/fachada-atardecer.webp" alt="Nuestro Sueño al caer la tarde" loading="lazy" /><span>Nuestro Sueño al caer la tarde</span></button>
+          <button class="gallery-photo" type="button" data-category="exteriores" aria-label="Ampliar: Balcón y fachada con iluminación cálida"><img src="./assets/balcon-atardecer.webp" alt="Balcón y fachada con iluminación cálida" loading="lazy" /><span>Balcón y fachada con iluminación cálida</span></button>
+          <button class="gallery-photo" type="button" data-category="exteriores" aria-label="Ampliar: Detalles del jardín"><img src="./assets/letreros-jardin.webp" alt="Detalles del jardín" loading="lazy" /><span>Detalles del jardín</span></button>
+          <button class="gallery-photo" type="button" data-category="exteriores" aria-label="Ampliar: Naturaleza que rodea la finca"><img src="./assets/arboles.webp" alt="Naturaleza que rodea la finca" loading="lazy" /><span>Naturaleza que rodea la finca</span></button>
+          <button class="gallery-photo" type="button" data-category="piscina" aria-label="Ampliar: Jacuzzi y piscina de noche"><img src="./assets/jacuzzi-noche.webp" alt="Jacuzzi y piscina de noche" loading="lazy" /><span>Jacuzzi y piscina de noche</span></button>
+          <button class="gallery-photo" type="button" data-category="piscina" aria-label="Ampliar: Piscina y paisaje natural durante el día"><img src="./assets/IMG_6463.webp" alt="Piscina y paisaje natural durante el día" loading="lazy" /><span>Piscina y paisaje natural durante el día</span></button>
+          <button class="gallery-photo" type="button" data-category="actividades" aria-label="Ampliar: Mesa de ping-pong en la zona cubierta"><img src="./assets/ping-pong.webp" alt="Mesa de ping-pong en la zona cubierta" loading="lazy" /><span>Mesa de ping-pong en la zona cubierta</span></button>
+          <button class="gallery-photo" type="button" data-category="actividades" aria-label="Ampliar: Espacio para compartir y jugar"><img src="./assets/IMG_7275.webp" alt="Espacio para compartir y jugar" loading="lazy" /><span>Espacio para compartir y jugar</span></button>
+          <button class="gallery-photo" type="button" data-category="interiores" aria-label="Ampliar: Habitación con decoración de luna y estrellas"><img src="./assets/habitacion-luna.webp" alt="Habitación con decoración de luna y estrellas" loading="lazy" /><span>Habitación con decoración de luna y estrellas</span></button>
+          <button class="gallery-photo" type="button" data-category="interiores" aria-label="Ampliar: Habitación con cama y baño privado"><img src="./assets/IMG_0436.webp" alt="Habitación con cama y baño privado" loading="lazy" /><span>Habitación con cama y baño privado</span></button>
+          <button class="gallery-photo" type="button" data-category="interiores" aria-label="Ampliar: Habitación familiar"><img src="./assets/IMG_0449.webp" alt="Habitación familiar" loading="lazy" /><span>Habitación familiar</span></button>
+          <button class="gallery-photo" type="button" data-category="interiores" aria-label="Ampliar: Sala de la finca"><img src="./assets/IMG_6658.webp" alt="Sala de la finca" loading="lazy" /><span>Sala de la finca</span></button>
+          <button class="gallery-photo" type="button" data-category="interiores" aria-label="Ampliar: Comedor para compartir"><img src="./assets/IMG_0445.webp" alt="Comedor para compartir" loading="lazy" /><span>Comedor para compartir</span></button>
+          <button class="gallery-photo" type="button" data-category="interiores" aria-label="Ampliar: Cocina totalmente equipada"><img src="./assets/IMG_0443.webp" alt="Cocina totalmente equipada" loading="lazy" /><span>Cocina totalmente equipada</span></button>
+          <button class="gallery-photo" type="button" data-category="interiores" aria-label="Ampliar: Baño con ducha"><img src="./assets/IMG_0441.webp" alt="Baño con ducha" loading="lazy" /><span>Baño con ducha</span></button>
+          <button class="gallery-photo" type="button" data-category="exteriores" aria-label="Ampliar: Zona cubierta y parqueadero"><img src="./assets/IMG_6451.webp" alt="Zona cubierta y parqueadero" loading="lazy" /><span>Zona cubierta y parqueadero</span></button>
+        </div>
+
       </section>
 
       <section class="location" id="ubicacion" data-page="finca">
@@ -172,13 +191,18 @@
 
             <article class="product-card" data-product="cafe" data-price="25000" data-label="Café Nuestro Sueño de 250 g">
               <div class="product-image-wrap">
-                <img src="./assets/cafe-nuestro-sueno-250g.webp" alt="Café Nuestro Sueño en presentación de 250 gramos" loading="lazy" />
+                <img class="coffee-main-photo" src="./assets/cafe-frente.webp" alt="Empaque real de Café Nuestro Sueño en presentación de 250 gramos" loading="lazy" />
                 <span class="product-badge">Café de origen</span>
               </div>
               <div class="product-info">
                 <p class="product-kicker">Aroma del Quindío</p>
                 <h3>Café Nuestro Sueño</h3>
-                <p class="product-description">Café de origen en presentación de 250 g para recordar la esencia cafetera de tu visita.</p>
+                <p class="product-description">Café tostado y molido de 250 g. Según su empaque: 100 % arábica, tueste medio y proceso lavado.</p>
+                <div class="coffee-views" aria-label="Vistas del café">
+                  <button type="button" data-coffee-view="cafe-frente" aria-pressed="true" aria-label="Ver frente del café"><img src="./assets/cafe-frente.webp" alt="Frente" loading="lazy" /></button>
+                  <button type="button" data-coffee-view="cafe-reverso" aria-pressed="false" aria-label="Ver reverso del café"><img src="./assets/cafe-reverso.webp" alt="Reverso" loading="lazy" /></button>
+                  <button type="button" data-coffee-view="cafe-detalle" aria-pressed="false" aria-label="Ver otra foto del café"><img src="./assets/cafe-detalle.webp" alt="Otra vista" loading="lazy" /></button>
+                </div>
                 <div class="product-buy-row">
                   <p class="product-price"><strong>$25.000</strong><span>COP · 250 g</span></p>
                   <div class="quantity-control" aria-label="Cantidad de cafés">
@@ -290,6 +314,11 @@
       <span>Quimbaya, Quindío · Colombia</span>
     </footer>
     <a class="whatsapp-float" href="https://wa.me/573218460307?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20Finca%20Nuestro%20Sue%C3%B1o." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">WA</a>
+    <dialog class="photo-viewer" id="photo-viewer" aria-label="Visor de fotografías">
+      <button class="viewer-close" type="button" aria-label="Cerrar fotografía">×</button>
+      <img id="viewer-image" alt="" />
+      <div class="viewer-controls"><button type="button" id="viewer-prev" aria-label="Foto anterior">←</button><p id="viewer-caption"></p><button type="button" id="viewer-next" aria-label="Foto siguiente">→</button></div>
+    </dialog>
     <script src="./script.js"></script>
   </body>
 </html>

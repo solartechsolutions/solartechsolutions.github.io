@@ -164,6 +164,28 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 24px
 .gallery-grid figure:hover img { transform: scale(1.035); }
 .gallery-wide { grid-column: span 2; }
 .gallery-tall { grid-row: span 2; }
+.gallery-filters { display: flex; flex-wrap: wrap; gap: 10px; }
+.gallery-filters button { padding: 10px 18px; border: 1px solid #9a7959; border-radius: 999px; color: var(--forest); background: rgba(240,227,210,.6); font: inherit; cursor: pointer; }
+.gallery-filters button[aria-pressed="true"] { color: var(--white); background: var(--forest); border-color: var(--forest); }
+.gallery-hint { color: var(--mocha); font-size: .85rem; margin: 14px 0 26px; }
+.curated-gallery { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 300px; gap: 18px; }
+.gallery-photo { position: relative; padding: 0; overflow: hidden; border: 0; border-radius: 20px; background: var(--forest); cursor: zoom-in; text-align: left; }
+.gallery-photo[hidden] { display: none; }
+.gallery-photo img { height: 100%; object-fit: cover; }
+.gallery-photo span { position: absolute; bottom: 0; left: 0; right: 0; padding: 40px 18px 18px; color: white; background: linear-gradient(transparent, rgba(8,27,20,.86)); font: 600 .88rem "DM Sans", sans-serif; }
+.photo-viewer { width: min(1050px, 94vw); max-height: 94svh; padding: 20px; border: 1px solid #8f7359; border-radius: 20px; color: var(--white); background: var(--forest-deep); }
+.photo-viewer::backdrop { background: rgba(0,0,0,.87); }
+.photo-viewer > img { height: min(72svh, 760px); object-fit: contain; }
+.viewer-close { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--gold); color: var(--forest); font-size: 30px; cursor: pointer; }
+.viewer-controls { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.viewer-controls p { text-align: center; font-size: .88rem; }
+.viewer-controls button { min-width: 44px; min-height: 44px; border: 1px solid #8f7359; border-radius: 50%; color: var(--gold); background: transparent; font-size: 24px; cursor: pointer; }
+.coffee-views { display: flex; gap: 10px; margin: 16px 0 24px; }
+.coffee-views button { width: 62px; height: 76px; padding: 0; overflow: hidden; border: 2px solid transparent; border-radius: 10px; cursor: pointer; }
+.coffee-views button[aria-pressed="true"] { border-color: var(--forest); }
+.coffee-views img { height: 100%; object-fit: cover; }
+.product-image-wrap .coffee-main-photo { object-fit: contain; background: #dfccb4; }
+button:focus-visible, a:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
 
 .location { display: grid; grid-template-columns: 1fr 1fr; min-height: 580px; }
 .location-panel { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: clamp(70px, 9vw, 120px); background: linear-gradient(145deg, #eadbc7, #d6bda0); }
