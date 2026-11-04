@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Selecciona una carga para lavar, secar o ambos y prueba el pago con Wompi.">
+<title>Lavandería César · Elige tu carga</title>
+<style>
+:root{font-family:system-ui,sans-serif;color:#102c24;background:#f7f7ef;line-height:1.5;--green:#164937;--lime:#dcf29f;--line:#dbe4d9}
+*{box-sizing:border-box}body{margin:0}header{border-bottom:1px solid var(--line)}.bar,main{max-width:1100px;margin:auto;padding-inline:clamp(16px,4vw,44px)}.bar{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:10px;font-weight:800}.brand i{font-style:normal;display:grid;place-items:center;background:var(--green);color:white;border-radius:10px;width:33px;height:33px}.tag{font-size:.75rem;font-weight:750;background:#e9efdf;border-radius:100px;padding:6px 12px;white-space:nowrap}
+.hero{padding:clamp(28px,5vw,58px) 0 30px}.kicker,.step{font-size:.72rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}.kicker{color:#38634e}h1,h2,p{margin:0}h1{font-size:clamp(2.8rem,7.7vw,5.4rem);letter-spacing:-.078em;line-height:1;margin:7px 0 14px}.hero p{color:#455e53}.layout{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(240px,1fr);align-items:start;gap:18px}.machines{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{background:white;border:1px solid var(--line);border-radius:23px;overflow:hidden}.art{height:190px;display:grid;place-items:center;position:relative;background:#dcece0}.dryer .art{background:#f4e6cc}.art .step{position:absolute;top:15px;left:16px}.art svg{height:175px;width:100%}.body{padding:17px}.body h2{font-size:1.52rem;letter-spacing:-.045em}.body p{font-size:.9rem;color:#455e53;margin-bottom:15px}.loads{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}.loads button{font:inherit;font-size:.75rem;font-weight:700;padding:9px 2px;border:1px solid #cad9ce;background:#fff;color:inherit;border-radius:8px;cursor:pointer}.loads button[aria-pressed=true]{background:var(--lime);border-color:#467259}.loads small{display:block;font-size:.68rem;font-weight:650;margin-top:3px}.summary li,.total{display:flex;justify-content:space-between;gap:10px}.total{border-top:1px solid #ffffff40;padding:10px 0 15px}.loads button:hover{border-color:#467259}.summary{background:var(--green);color:white;border-radius:23px;padding:22px}.summary .step{color:var(--lime)}.summary h2{margin:5px 0 12px;letter-spacing:-.035em}.summary ul{list-style:none;padding:0;margin:0 0 15px;min-height:50px}.summary li{padding:7px 0;border-top:1px solid #ffffff40;font-size:.91rem}.pay{display:block;text-align:center;background:var(--lime);color:#123a2b;font-weight:800;padding:12px;border-radius:10px;text-decoration:none}.pay[aria-disabled=true]{background:#e3eadb;color:#425747;cursor:default}.summary p{margin-top:12px;font-size:.79rem;color:#edf4eb}footer{padding:22px 0 32px;color:#455e53;font-size:.85rem}a:focus-visible,button:focus-visible{outline:3px solid #278470;outline-offset:3px}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.summary{width:100%}}@media(max-width:470px){.machines{grid-template-columns:1fr}.art{height:168px}.art svg{height:155px}}
+</style>
+</head>
+<body>
+<header><div class="bar"><span class="brand"><i aria-hidden="true">✦</i> Lavandería César</span><span class="tag">Modo de prueba</span></div></header>
+<main>
+<section class="hero"><div class="kicker">Lavandería de autoservicio</div><h1>Elige tu carga</h1><p>Selecciona una carga para lavar, secar o hacer ambas cosas.</p></section>
+<div class="layout">
+<section class="machines" aria-label="Máquinas disponibles">
+<article class="card">
+<div class="art"><span class="step">01 / Lavado</span>
+<svg viewBox="0 0 260 180" role="img" aria-label="Ilustración de una lavadora de carga frontal">
+<ellipse cx="131" cy="161" rx="65" ry="8" fill="#b7d2be"/>
+<rect x="83" y="24" width="100" height="136" rx="12" fill="#87a696"/>
+<rect x="75" y="22" width="99" height="136" rx="11" fill="#fffdf5" stroke="#294b3d" stroke-width="2"/>
+<path d="M76 53h97" stroke="#a5b6ad"/><rect x="86" y="33" width="26" height="9" rx="3" fill="#c2d8ca"/><circle cx="152" cy="38" r="6" fill="#477360"/>
+<circle cx="124" cy="101" r="34" fill="#bddac9" stroke="#294b3d" stroke-width="3"/><circle cx="124" cy="101" r="26" fill="#427864"/>
+<path d="M99 105q12-10 25 0t25 0a25 25 0 0 1-50 0" fill="#99cfb6"/><circle cx="114" cy="93" r="4" fill="#d6f1e3"/><circle cx="132" cy="87" r="3" fill="#d6f1e3"/>
+</svg></div>
+<div class="body"><h2>Lavadora</h2><p>Escoge el tamaño de tu carga de lavado.</p><div class="loads" role="group" aria-label="Carga de lavadora">
+<button type="button" data-size="Pequeña" aria-pressed="false">Pequeña</button><button type="button" data-size="Mediana" aria-pressed="false">Mediana</button><button type="button" data-size="Grande" aria-pressed="false">Grande</button>
+</div></div></article>
+<article class="card dryer">
+<div class="art"><span class="step">02 / Secado</span>
+<svg viewBox="0 0 260 180" role="img" aria-label="Ilustración de una secadora de carga frontal">
+<ellipse cx="131" cy="161" rx="65" ry="8" fill="#dfc69b"/>
+<rect x="83" y="24" width="100" height="136" rx="12" fill="#ab8d62"/>
+<rect x="75" y="22" width="99" height="136" rx="11" fill="#fffaf0" stroke="#5b4731" stroke-width="2"/>
+<path d="M76 53h97" stroke="#c1ad91"/><rect x="86" y="33" width="27" height="9" rx="3" fill="#e7cf9f"/><circle cx="152" cy="38" r="6" fill="#9f6537"/>
+<circle cx="124" cy="100" r="34" fill="#efd5a7" stroke="#5b4731" stroke-width="3"/><circle cx="124" cy="100" r="26" fill="#9c6844"/>
+<path d="M111 113c-9-8 9-13 0-22m13 22c-9-8 9-13 0-22m13 22c-9-8 9-13 0-22" fill="none" stroke="#f8dda5" stroke-width="3" stroke-linecap="round"/><path d="M109 143h30" stroke="#b99a73" stroke-width="3" stroke-linecap="round"/>
+</svg></div>
+<div class="body"><h2>Secadora</h2><p>Escoge el tamaño de tu carga de secado.</p><div class="loads" role="group" aria-label="Carga de secadora">
+<button type="button" data-size="Pequeña" aria-pressed="false">Pequeña</button><button type="button" data-size="Mediana" aria-pressed="false">Mediana</button><button type="button" data-size="Grande" aria-pressed="false">Grande</button>
+</div></div></article>
+</section>
+<aside class="summary" aria-labelledby="order"><div class="step">03 / Pago</div><h2 id="order">Tu selección</h2><ul id="selection" aria-live="polite"></ul><div class="total"><span>Total del pedido</span><strong id="total">$0 COP</strong></div><a class="pay" id="pay" aria-disabled="true" aria-describedby="payment-note">Ir a Wompi · Prueba</a><p id="payment-note">El total corresponde a tu selección. El enlace de prueba de Wompi usa su propio monto y no activa las máquinas.</p></aside>
+</div>
+<footer>Pulsa una carga seleccionada para quitarla del pedido.</footer>
+</main>
+<script>
+const checkout = "https://checkout.wompi.co/l/test_VPOS_mQsVRt";
+const prices = { Pequeña: 5000, Mediana: 7000, Grande: 10000 };
+const number = new Intl.NumberFormat("es-CO", { useGrouping: "always" });
+const formatPrice = amount => "$" + number.format(amount) + " COP";
+const groups = [...document.querySelectorAll(".loads")];
+const summary = document.querySelector("#selection");
+const pay = document.querySelector("#pay");
+const total = document.querySelector("#total");
+
+function renderSelection() {
+  const selections = groups.flatMap(group => {
+    const selected = group.querySelector('[aria-pressed="true"]');
+    if (!selected) return [];
+    const size = selected.dataset.size;
+    const machine = group.closest(".card").querySelector("h2").textContent;
+    return [{ label: machine + " · " + size, price: prices[size] }];
+  });
+  summary.replaceChildren(...(selections.length ? selections : [{ label: "Todavía no has elegido una carga." }]).map(({ label, price }) => {
+    const item = document.createElement("li");
+    const description = document.createElement("span");
+    description.textContent = label;
+    item.append(description);
+    if (price !== undefined) {
+      const amount = document.createElement("strong");
+      amount.textContent = formatPrice(price);
+      item.append(amount);
+    }
+    return item;
+  }));
+  total.textContent = formatPrice(selections.reduce((sum, item) => sum + item.price, 0));
+  pay.setAttribute("aria-disabled", String(!selections.length));
+  if (selections.length) pay.href = checkout;
+  else pay.removeAttribute("href");
+}
+
+for (const group of groups) {
+  for (const option of group.querySelectorAll("button")) {
+    const amount = document.createElement("small");
+    amount.textContent = formatPrice(prices[option.dataset.size]);
+    option.append(amount);
+  }
+  group.addEventListener("click", event => {
+    const button = event.target.closest("button[data-size]");
+    if (!button) return;
+    const wasSelected = button.getAttribute("aria-pressed") === "true";
+    for (const option of group.querySelectorAll("button")) {
+      option.setAttribute("aria-pressed", String(option === button && !wasSelected));
+    }
+    renderSelection();
+  });
+}
+renderSelection();
+</script>
+</body>
+</html>
