@@ -71,19 +71,30 @@
     <div class="room-body">
       <div class="kicker">Alojamiento</div>
       <h2 id="rooms-title">Habitaciones César</h2>
-      <p class="room-intro">Elige la tarifa que acordaste con el alojamiento y paga con Wompi.</p>
+      <p class="room-intro">Selecciona la habitación o cabaña que acordaste con el alojamiento. El precio se muestra en cada opción.</p>
       <fieldset class="room-rates" id="room-rates">
-        <legend>Tarifa de la habitación</legend>
+        <legend>Habitaciones y cabañas</legend>
         <div class="rate-grid">
-          <label class="rate-card"><input type="radio" name="room-rate" value="600000"><span><strong>$600.000</strong><small>COP</small></span></label>
-          <label class="rate-card"><input type="radio" name="room-rate" value="700000"><span><strong>$700.000</strong><small>COP</small></span></label>
-          <label class="rate-card"><input type="radio" name="room-rate" value="800000"><span><strong>$800.000</strong><small>COP</small></span></label>
-          <label class="rate-card"><input type="radio" name="room-rate" value="900000"><span><strong>$900.000</strong><small>COP</small></span></label>
-          <label class="rate-card"><input type="radio" name="room-rate" value="1000000"><span><strong>$1.000.000</strong><small>COP</small></span></label>
+          <label class="rate-card"><input type="radio" name="room-rate" value="101" data-price="800000"><span><strong>Habitación 101</strong><small>$800.000 COP</small></span></label>
+          <label class="rate-card"><input type="radio" name="room-rate" value="102" data-price="600000"><span><strong>Habitación 102</strong><small>$600.000 COP</small></span></label>
+          <label class="rate-card"><input type="radio" name="room-rate" value="103" data-price="700000"><span><strong>Habitación 103</strong><small>$700.000 COP</small></span></label>
+          <label class="rate-card"><input type="radio" name="room-rate" value="201" data-price="700000"><span><strong>Habitación 201</strong><small>$700.000 COP</small></span></label>
+          <label class="rate-card"><input type="radio" name="room-rate" value="202" data-price="800000"><span><strong>Habitación 202</strong><small>$800.000 COP</small></span></label>
+          <label class="rate-card"><input type="radio" name="room-rate" value="301" data-price="1000000"><span><strong>Habitación 301</strong><small><div class="rate-grid">.000.000 COP</small></span></label>
+          <label class="rate-card"><input type="radio" name="room-rate" value="303" data-price="900000"><span><strong>Habitación 303</strong><small>$900.000 COP</small></span></label>
+          <label class="rate-card"><input type="radio" name="room-rate" value="304" data-price="700000"><span><strong>Habitación 304</strong><small>$700.000 COP</small></span></label>
+          <label class="rate-card"><input type="radio" name="room-rate" value="305" data-price="900000"><span><strong>Habitación 305</strong><small>$900.000 COP</small></span></label>
+          <label class="rate-card"><input type="radio" name="room-rate" value="306" data-price="600000"><span><strong>Habitación 306</strong><small>$600.000 COP</small></span></label>
+          <label class="rate-card"><input type="radio" name="room-rate" value="307" data-price="700000"><span><strong>Habitación 307</strong><small>$700.000 COP</small></span></label>
+          <label class="rate-card"><input type="radio" name="room-rate" value="308" data-price="900000"><span><strong>Habitación 308</strong><small>$900.000 COP</small></span></label>
+          <label class="rate-card"><input type="radio" name="room-rate" value="309" data-price="900000"><span><strong>Habitación 309</strong><small>$900.000 COP</small></span></label>
+          <label class="rate-card"><input type="radio" name="room-rate" value="Cabaña 1" data-price="1000000"><span><strong>Cabaña 1</strong><small><div class="rate-grid">.000.000 COP</small></span></label>
+          <label class="rate-card"><input type="radio" name="room-rate" value="Cabaña 2" data-price="900000"><span><strong>Cabaña 2</strong><small>$900.000 COP</small></span></label>
+          <label class="rate-card"><input type="radio" name="room-rate" value="Cabaña 3" data-price="800000"><span><strong>Cabaña 3</strong><small>$800.000 COP</small></span></label>
         </div>
       </fieldset>
       <div class="room-checkout">
-        <p id="room-payment-note" aria-live="polite">Selecciona una tarifa para continuar. El pago no confirma la reserva automáticamente.</p>
+        <p id="room-payment-note" aria-live="polite">Selecciona una habitación o cabaña para continuar. El pago no confirma la reserva automáticamente.</p>
         <a class="pay" id="room-pay" aria-disabled="true" aria-describedby="room-payment-note">Pagar habitación con Wompi</a>
       </div>
     </div>
@@ -155,7 +166,7 @@ const roomPaymentNote = document.querySelector("#room-payment-note");
 const initialRoomNote = roomPaymentNote.textContent;
 
 function renderRoomPayment() {
-  const amount = Number(roomRates.querySelector("input:checked")?.value ?? 0);
+  const amount = Number(roomRates.querySelector("input:checked")?.dataset.price ?? 0);
   roomPaymentNote.textContent = amount
     ? "Ingresa " + formatPrice(amount) + " en Wompi. El pago no confirma la reserva automáticamente."
     : initialRoomNote;
