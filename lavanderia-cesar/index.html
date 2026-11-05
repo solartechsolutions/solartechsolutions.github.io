@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Selecciona una carga para lavar, secar o ambos y prueba el pago con Wompi.">
+<meta name="description" content="Selecciona una carga para lavar, secar o ambos y paga con Wompi.">
 <title>Lavandería César · Elige tu carga</title>
 <style>
 :root{font-family:system-ui,sans-serif;color:#102c24;background:#f7f7ef;line-height:1.5;--green:#164937;--lime:#dcf29f;--line:#dbe4d9}
@@ -13,7 +13,7 @@
 </style>
 </head>
 <body>
-<header><div class="bar"><span class="brand"><i aria-hidden="true">✦</i> Lavandería César</span><span class="tag">Modo de prueba</span></div></header>
+<header><div class="bar"><span class="brand"><i aria-hidden="true">✦</i> Lavandería César</span><span class="tag">Pago con Wompi</span></div></header>
 <main>
 <section class="hero"><div class="kicker">Lavandería de autoservicio</div><h1>Elige tu carga</h1><p>Selecciona una carga para lavar, secar o hacer ambas cosas.</p></section>
 <div class="layout">
@@ -45,12 +45,12 @@
 <button type="button" data-size="Pequeña" aria-pressed="false">Pequeña</button><button type="button" data-size="Mediana" aria-pressed="false">Mediana</button><button type="button" data-size="Grande" aria-pressed="false">Grande</button>
 </div></div></article>
 </section>
-<aside class="summary" aria-labelledby="order"><div class="step">03 / Pago</div><h2 id="order">Tu selección</h2><ul id="selection" aria-live="polite"></ul><div class="total"><span>Total del pedido</span><strong id="total">$0 COP</strong></div><a class="pay" id="pay" aria-disabled="true" aria-describedby="payment-note">Ir a Wompi · Prueba</a><p id="payment-note">El total corresponde a tu selección. El enlace de prueba de Wompi usa su propio monto y no activa las máquinas.</p></aside>
+<aside class="summary" aria-labelledby="order"><div class="step">03 / Pago</div><h2 id="order">Tu selección</h2><ul id="selection" aria-live="polite"></ul><div class="total"><span>Total del pedido</span><strong id="total">$0 COP</strong></div><a class="pay" id="pay" aria-disabled="true" aria-describedby="payment-note">Pagar con Wompi</a><p id="payment-note">Selecciona una carga para ver cuánto debes ingresar en Wompi. El pago no activa las máquinas automáticamente.</p></aside>
 </div>
 <footer>Pulsa una carga seleccionada para quitarla del pedido.</footer>
 </main>
 <script>
-const checkout = "https://checkout.wompi.co/l/test_VPOS_mQsVRt";
+const checkout = "https://checkout.wompi.co/l/VPOS_xVB9TP";
 const prices = { Pequeña: 5000, Mediana: 7000, Grande: 10000 };
 const number = new Intl.NumberFormat("es-CO", { useGrouping: "always" });
 const formatPrice = amount => "$" + number.format(amount) + " COP";
@@ -58,6 +58,8 @@ const groups = [...document.querySelectorAll(".loads")];
 const summary = document.querySelector("#selection");
 const pay = document.querySelector("#pay");
 const total = document.querySelector("#total");
+const paymentNote = document.querySelector("#payment-note");
+const initialPaymentNote = paymentNote.textContent;
 
 function renderSelection() {
   const selections = groups.flatMap(group => {
@@ -80,6 +82,9 @@ function renderSelection() {
     return item;
   }));
   total.textContent = formatPrice(selections.reduce((sum, item) => sum + item.price, 0));
+  paymentNote.textContent = selections.length
+    ? "Ingresa " + total.textContent + " en Wompi. El pago no activa las máquinas automáticamente."
+    : initialPaymentNote;
   pay.setAttribute("aria-disabled", String(!selections.length));
   if (selections.length) pay.href = checkout;
   else pay.removeAttribute("href");
