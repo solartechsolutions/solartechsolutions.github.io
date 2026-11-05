@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Selecciona una carga para lavar, secar o ambos y paga con Wompi.">
+<title>cooliving Av Colon</title>
+<style>
+:root {
+  color-scheme: light;
+  font-family: system-ui, sans-serif;
+  color: #292c27;
+  background: #f3f4ef;
+  line-height: 1.5;
+  --ink: #292c27;
+  --muted: #605e54;
+  --green: #244b3d;
+  --line: #ddd6c9;
+  --paper: #fffdf8;
+}
+* { box-sizing: border-box; }
+body, h1, h2, h3, p { margin: 0; }
+header { background: var(--paper); border-bottom: 1px solid var(--line); }
+.bar, main { max-width: 1100px; margin: auto; padding-inline: clamp(16px, 5vw, 52px); }
+.bar { display: flex; align-items: center; justify-content: space-between; min-height: 66px; gap: 12px; }
+.brand { font-family: Georgia, serif; font-weight: bold; font-size: 1.23rem; }
+.bar nav { display: flex; gap: clamp(10px, 3vw, 24px); font-size: .9rem; }
+.bar a { color: var(--green); text-underline-offset: 4px; }
+.hero { padding: 46px 0 24px; }
+h1, .rooms h2 { font-family: Georgia, serif; font-weight: 500; letter-spacing: -.035em; line-height: 1.08; }
+h1 { font-size: clamp(2.65rem, 7vw, 4.5rem); margin-bottom: 10px; }
+.hero p, .body p, .room-intro { color: var(--muted); }
+.layout { display: grid; grid-template-columns: minmax(0, 2.25fr) minmax(240px, 1fr); align-items: start; gap: 20px; }
+.machines { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.card, .summary, .room-shell { border: 1px solid var(--line); background: var(--paper); border-radius: 13px; overflow: hidden; }
+.art { height: 122px; display: grid; place-items: center; background: #e5ebe2; }
+.dryer .art { background: #efe4d4; }
+.art img { height: 114px; width: 100%; }
+.body, .summary { padding: 17px; }
+.body h2, .summary h2 { font-size: 1.2rem; margin-bottom: 3px; }
+.body p { font-size: .88rem; margin-bottom: 12px; }
+.loads { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; }
+.loads button, .rate-card { border: 1px solid var(--line); border-radius: 7px; background: var(--paper); color: inherit; cursor: pointer; }
+.loads button { font: inherit; font-size: .75rem; font-weight: 650; padding: 9px 1px; }
+.loads small { display: block; color: var(--muted); font-size: .7rem; margin-top: 2px; }
+.loads button[aria-pressed=true], .rate-card:has(input:checked) { background: #e6eee5; border-color: var(--green); }
+.summary ul { list-style: none; margin: 12px 0 0; padding: 0; }
+.summary li, .total { display: flex; justify-content: space-between; gap: 8px; padding: 8px 0; border-top: 1px solid var(--line); font-size: .9rem; }
+.total { margin-bottom: 7px; }
+.summary p, .room-checkout p { color: var(--muted); font-size: .85rem; }
+.summary p { margin-top: 10px; }
+.pay { display: block; padding: 11px 14px; background: var(--green); color: white; font-weight: 700; text-align: center; text-decoration: none; border-radius: 7px; }
+.pay[aria-disabled=true] { background: #eae6dc; color: #605b50; cursor: default; }
+a:focus-visible, button:focus-visible, .rate-card:has(input:focus-visible) { outline: 3px solid #397a61; outline-offset: 2px; }
+.laundry-hint { padding: 13px 0 36px; color: var(--muted); font-size: .84rem; }
+.rooms { border-top: 1px solid var(--line); padding: 30px 0 44px; }
+.room-heading { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; background: #ede6d8; }
+.room-heading-text { padding: clamp(18px, 4vw, 34px); }
+.rooms h2 { font-size: clamp(2rem, 5.5vw, 3.3rem); margin-bottom: 9px; }
+.room-art { display: block; width: 100%; height: 190px; object-fit: cover; }
+.room-body { padding: clamp(14px, 3vw, 26px); }
+.room-rates { border: 0; padding: 0; margin: 0; min-width: 0; }
+.room-rates legend { font-weight: 700; }
+.room-group { margin-top: 14px; }
+.room-group h3 { margin-bottom: 7px; font-size: .92rem; color: var(--green); }
+.rate-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 145px), 1fr)); gap: 7px; }
+.rate-card { display: flex; align-items: center; gap: 7px; padding: 7px 9px; min-height: 54px; }
+.rate-card input { margin: 0; flex: none; accent-color: var(--green); }
+.rate-card strong, .rate-card small { display: block; font-size: .84rem; }
+.rate-card small { color: var(--muted); }
+.room-checkout { border-top: 1px solid var(--line); margin-top: 19px; padding-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.room-checkout .pay { flex-shrink: 0; }
+@media (max-width: 800px) { .layout { grid-template-columns: 1fr; } }
+@media (max-width: 580px) {
+  .hero { padding-top: 30px; }
+  .room-heading, .room-checkout { display: grid; grid-template-columns: 1fr; }
+  .room-art { height: 128px; }
+  .rate-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 470px) { .machines { grid-template-columns: 1fr; } }
+.rooms {
+  --room-border: #acbca9;
+  --room-ink: #254538;
+  --room-card: #fcfdfb;
+  color: var(--room-ink);
+}
+.rooms .room-shell { border-color: var(--room-border); }
+.room-heading { background: linear-gradient(110deg, #f3f0e5, #d6e4d9); }
+.room-intro { color: #40594d; }
+.room-body { background: #eff3eb; }
+.room-group h3 { color: var(--room-ink); }
+.rate-card { background: var(--room-card); border-color: #b6c5b7; }
+.rate-card small { color: #43594d; }
+.rate-card:hover { background: #f0f5ef; border-color: #708a75; }
+.rate-card:has(input:checked) { background: #dae9dc; border-color: #3e6955; }
+.room-checkout { border-top-color: var(--room-border); }
+.room-checkout p { color: #40594d; }
+.room-checkout .pay[aria-disabled=true] { background: #d7e2d5; color: #43594d; }
+.room-report { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 16px; margin-top: 14px; font-size: .9rem; }
+.room-report a { color: var(--green); font-weight: 700; text-underline-offset: 3px; }
+</style>
+</head>
+<body>
+<header><div class="bar"><span class="brand">cooliving Av Colon</span><nav aria-label="Servicios"><a href="#lavanderia">Lavandería</a><a href="#habitaciones">Habitaciones</a></nav></div></header>
+<main>
+<section class="hero" id="lavanderia"><h1>Lavandería</h1><p>Elige una carga de lavado, secado o ambas.</p></section>
+<div class="layout">
+<section class="machines" aria-label="Máquinas disponibles">
+<article class="card">
+<div class="art">
+<img src="../lavanderia-cesar/assets/lavadora.svg" alt="Lavadora de carga frontal" width="260" height="180"></div>
+<div class="body"><h2>Lavadora</h2><p>Escoge el tamaño de tu carga de lavado.</p><div class="loads" role="group" aria-label="Carga de lavadora">
+<button type="button" data-size="Pequeña" aria-pressed="false">Pequeña</button><button type="button" data-size="Mediana" aria-pressed="false">Mediana</button><button type="button" data-size="Grande" aria-pressed="false">Grande</button>
+</div></div></article>
+<article class="card dryer">
+<div class="art">
+<img src="../lavanderia-cesar/assets/secadora.svg" alt="Secadora de carga frontal" width="260" height="180"></div>
+<div class="body"><h2>Secadora</h2><p>Escoge el tamaño de tu carga de secado.</p><div class="loads" role="group" aria-label="Carga de secadora">
+<button type="button" data-size="Pequeña" aria-pressed="false">Pequeña</button><button type="button" data-size="Mediana" aria-pressed="false">Mediana</button><button type="button" data-size="Grande" aria-pressed="false">Grande</button>
+</div></div></article>
+</section>
+<aside class="summary" aria-labelledby="order"><h2 id="order">Tu selección</h2><ul id="selection" aria-live="polite"></ul><div class="total"><span>Total del pedido</span><strong id="total">$0 COP</strong></div><a class="pay" id="pay" aria-disabled="true" aria-describedby="payment-note">Pagar con Wompi</a><p id="payment-note">Selecciona una carga para ver cuánto debes ingresar en Wompi. El pago no activa las máquinas automáticamente.</p></aside>
+</div>
+<p class="laundry-hint">Pulsa una carga seleccionada para quitarla del pedido.</p>
+<section class="rooms" id="habitaciones" aria-labelledby="rooms-title">
+  <div class="room-shell">
+    <div class="room-heading"><div class="room-heading-text"><h2 id="rooms-title">Habitaciones</h2><p class="room-intro">Selecciona la habitación o cabaña que acordaste con el alojamiento. El precio se muestra en cada opción.</p></div><img class="room-art" src="../lavanderia-cesar/assets/casita.svg" alt="Casita entre montañas con jardín y sendero" width="680" height="330"></div>
+    <div class="room-body">
+      <fieldset class="room-rates" id="room-rates">
+        <legend>Elige tu habitación o cabaña</legend>
+        <section class="room-group" aria-labelledby="room-group-0">
+          <h3 id="room-group-0">Piso 1</h3>
+          <div class="rate-grid">
+            <label class="rate-card"><input type="radio" name="room-rate" value="101" data-price="800000" data-label="Habitación 101"><span><strong>Habitación 101</strong><small>$800.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="102" data-price="600000" data-label="Habitación 102"><span><strong>Habitación 102</strong><small>$600.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="103" data-price="700000" data-label="Habitación 103"><span><strong>Habitación 103</strong><small>$700.000 COP</small></span></label>
+          </div>
+        </section>
+        <section class="room-group" aria-labelledby="room-group-1">
+          <h3 id="room-group-1">Piso 2</h3>
+          <div class="rate-grid">
+            <label class="rate-card"><input type="radio" name="room-rate" value="201" data-price="700000" data-label="Habitación 201"><span><strong>Habitación 201</strong><small>$700.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="202" data-price="800000" data-label="Habitación 202"><span><strong>Habitación 202</strong><small>$800.000 COP</small></span></label>
+          </div>
+        </section>
+        <section class="room-group" aria-labelledby="room-group-2">
+          <h3 id="room-group-2">Piso 3</h3>
+          <div class="rate-grid">
+            <label class="rate-card"><input type="radio" name="room-rate" value="301" data-price="1000000" data-label="Habitación 301"><span><strong>Habitación 301</strong><small>$1.000.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="303" data-price="900000" data-label="Habitación 303"><span><strong>Habitación 303</strong><small>$900.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="304" data-price="700000" data-label="Habitación 304"><span><strong>Habitación 304</strong><small>$700.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="305" data-price="900000" data-label="Habitación 305"><span><strong>Habitación 305</strong><small>$900.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="306" data-price="600000" data-label="Habitación 306"><span><strong>Habitación 306</strong><small>$600.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="307" data-price="700000" data-label="Habitación 307"><span><strong>Habitación 307</strong><small>$700.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="308" data-price="900000" data-label="Habitación 308"><span><strong>Habitación 308</strong><small>$900.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="309" data-price="900000" data-label="Habitación 309"><span><strong>Habitación 309</strong><small>$900.000 COP</small></span></label>
+          </div>
+        </section>
+        <section class="room-group" aria-labelledby="room-group-3">
+          <h3 id="room-group-3">Cabañas</h3>
+          <div class="rate-grid">
+            <label class="rate-card"><input type="radio" name="room-rate" value="Cabaña 1" data-price="1000000" data-label="Cabaña 1"><span><strong>Cabaña 1</strong><small>$1.000.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="Cabaña 2" data-price="900000" data-label="Cabaña 2"><span><strong>Cabaña 2</strong><small>$900.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="Cabaña 3" data-price="800000" data-label="Cabaña 3"><span><strong>Cabaña 3</strong><small>$800.000 COP</small></span></label>
+          </div>
+        </section>
+      </fieldset>
+      <div class="room-checkout">
+        <p id="room-payment-note" aria-live="polite">Selecciona una habitación o cabaña para continuar. El pago no confirma la reserva automáticamente.</p>
+        <a class="pay" id="room-pay" aria-disabled="true" aria-describedby="room-payment-note">Pagar habitación con Wompi</a>
+      </div>
+      <p class="room-report"><span>¿Ya pagaste? Reporta la referencia de Wompi para recibir tu comprobante por correo.</span><a id="room-report" href="https://docs.google.com/forms/d/e/1FAIpQLSdqDcpOz2LxdmBHEhXGf4rXvXIFwq79kUaFlG5Zj2u48jWf3w/viewform">Reportar mi pago</a></p>
+    </div>
+  </div>
+</section>
+</main>
+<script>
+const checkout = "https://checkout.wompi.co/l/VPOS_xVB9TP";
+const prices = { Pequeña: 5000, Mediana: 7000, Grande: 10000 };
+const number = new Intl.NumberFormat("es-CO", { useGrouping: "always" });
+const formatPrice = amount => "$" + number.format(amount) + " COP";
+const groups = [...document.querySelectorAll(".loads")];
+const summary = document.querySelector("#selection");
+const pay = document.querySelector("#pay");
+const total = document.querySelector("#total");
+const paymentNote = document.querySelector("#payment-note");
+const initialPaymentNote = paymentNote.textContent;
+
+function renderSelection() {
+  const selections = groups.flatMap(group => {
+    const selected = group.querySelector('[aria-pressed="true"]');
+    if (!selected) return [];
+    const size = selected.dataset.size;
+    const machine = group.closest(".card").querySelector("h2").textContent;
+    return [{ label: machine + " · " + size, price: prices[size] }];
+  });
+  summary.replaceChildren(...(selections.length ? selections : [{ label: "Todavía no has elegido una carga." }]).map(({ label, price }) => {
+    const item = document.createElement("li");
+    const description = document.createElement("span");
+    description.textContent = label;
+    item.append(description);
+    if (price !== undefined) {
+      const amount = document.createElement("strong");
+      amount.textContent = formatPrice(price);
+      item.append(amount);
+    }
+    return item;
+  }));
+  total.textContent = formatPrice(selections.reduce((sum, item) => sum + item.price, 0));
+  paymentNote.textContent = selections.length
+    ? "Ingresa " + total.textContent + " en Wompi. El pago no activa las máquinas automáticamente."
+    : initialPaymentNote;
+  pay.setAttribute("aria-disabled", String(!selections.length));
+  if (selections.length) pay.href = checkout;
+  else pay.removeAttribute("href");
+}
+
+for (const group of groups) {
+  for (const option of group.querySelectorAll("button")) {
+    const amount = document.createElement("small");
+    amount.textContent = formatPrice(prices[option.dataset.size]);
+    option.append(amount);
+  }
+  group.addEventListener("click", event => {
+    const button = event.target.closest("button[data-size]");
+    if (!button) return;
+    const wasSelected = button.getAttribute("aria-pressed") === "true";
+    for (const option of group.querySelectorAll("button")) {
+      option.setAttribute("aria-pressed", String(option === button && !wasSelected));
+    }
+    renderSelection();
+  });
+}
+renderSelection();
+
+const roomRates = document.querySelector("#room-rates");
+const roomPay = document.querySelector("#room-pay");
+const roomPaymentNote = document.querySelector("#room-payment-note");
+const initialRoomNote = roomPaymentNote.textContent;
+const reportLink = document.querySelector("#room-report");
+const reportForm = reportLink.href;
+
+function renderRoomPayment() {
+  const selected = roomRates.querySelector("input:checked");
+  const amount = Number(selected?.dataset.price ?? 0);
+  const reportUrl = new URL(reportForm);
+  if (selected) reportUrl.searchParams.set("entry.1338243842", selected.dataset.label);
+  reportLink.href = reportUrl.href;
+  roomPaymentNote.textContent = amount
+    ? selected.dataset.label + " · Ingresa " + formatPrice(amount) + " en Wompi. El pago no confirma la reserva automáticamente."
+    : initialRoomNote;
+  roomPay.setAttribute("aria-disabled", String(!amount));
+  if (amount) roomPay.href = checkout;
+  else roomPay.removeAttribute("href");
+}
+roomRates.addEventListener("change", renderRoomPayment);
+renderRoomPayment();
+</script>
+</body>
+</html>
