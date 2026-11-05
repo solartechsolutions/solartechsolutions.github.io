@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 180" role="img" aria-label="Ilustración de una secadora de carga frontal">
+<style>.aire{animation:calor 1.5s ease-in-out 3} @keyframes calor{50%{transform:translateY(-5px);opacity:.55}} @media(prefers-reduced-motion:reduce){.aire{animation:none}}</style>
+<ellipse cx="131" cy="161" rx="65" ry="8" fill="#dfc69b"/>
+<rect x="83" y="24" width="100" height="136" rx="12" fill="#ab8d62"/>
+<rect x="75" y="22" width="99" height="136" rx="11" fill="#fffaf0" stroke="#5b4731" stroke-width="2"/>
+<path d="M76 53h97" stroke="#c1ad91"/><rect x="86" y="33" width="27" height="9" rx="3" fill="#e7cf9f"/><circle cx="152" cy="38" r="6" fill="#9f6537"/>
+<circle cx="124" cy="100" r="34" fill="#efd5a7" stroke="#5b4731" stroke-width="3"/><circle cx="124" cy="100" r="26" fill="#9c6844"/>
+<g class="aire"><path d="M111 113c-9-8 9-13 0-22m13 22c-9-8 9-13 0-22m13 22c-9-8 9-13 0-22" fill="none" stroke="#f8dda5" stroke-width="3" stroke-linecap="round"/></g><path d="M109 143h30" stroke="#b99a73" stroke-width="3" stroke-linecap="round"/>
+</svg>
