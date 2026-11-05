@@ -10,6 +10,7 @@
 *{box-sizing:border-box}body{margin:0}header{border-bottom:1px solid var(--line)}.bar,main{max-width:1100px;margin:auto;padding-inline:clamp(16px,4vw,44px)}.bar{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:10px;font-weight:800}.brand i{font-style:normal;display:grid;place-items:center;background:var(--green);color:white;border-radius:10px;width:33px;height:33px}.tag{font-size:.75rem;font-weight:750;background:#e9efdf;border-radius:100px;padding:6px 12px;white-space:nowrap}
 .hero{padding:clamp(28px,5vw,58px) 0 30px}.kicker,.step{font-size:.72rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}.kicker{color:#38634e}h1,h2,p{margin:0}h1{font-size:clamp(2.8rem,7.7vw,5.4rem);letter-spacing:-.078em;line-height:1;margin:7px 0 14px}.hero p{color:#455e53}.layout{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(240px,1fr);align-items:start;gap:18px}.machines{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{background:white;border:1px solid var(--line);border-radius:23px;overflow:hidden}.art{height:190px;display:grid;place-items:center;position:relative;background:#dcece0}.dryer .art{background:#f4e6cc}.art .step{position:absolute;top:15px;left:16px}.art svg{height:175px;width:100%}.body{padding:17px}.body h2{font-size:1.52rem;letter-spacing:-.045em}.body p{font-size:.9rem;color:#455e53;margin-bottom:15px}.loads{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}.loads button{font:inherit;font-size:.75rem;font-weight:700;padding:9px 2px;border:1px solid #cad9ce;background:#fff;color:inherit;border-radius:8px;cursor:pointer}.loads button[aria-pressed=true]{background:var(--lime);border-color:#467259}.loads small{display:block;font-size:.68rem;font-weight:650;margin-top:3px}.summary li,.total{display:flex;justify-content:space-between;gap:10px}.total{border-top:1px solid #ffffff40;padding:10px 0 15px}.loads button:hover{border-color:#467259}.summary{background:var(--green);color:white;border-radius:23px;padding:22px}.summary .step{color:var(--lime)}.summary h2{margin:5px 0 12px;letter-spacing:-.035em}.summary ul{list-style:none;padding:0;margin:0 0 15px;min-height:50px}.summary li{padding:7px 0;border-top:1px solid #ffffff40;font-size:.91rem}.pay{display:block;text-align:center;background:var(--lime);color:#123a2b;font-weight:800;padding:12px;border-radius:10px;text-decoration:none}.pay[aria-disabled=true]{background:#e3eadb;color:#425747;cursor:default}.summary p{margin-top:12px;font-size:.79rem;color:#edf4eb}footer{padding:22px 0 32px;color:#455e53;font-size:.85rem}a:focus-visible,button:focus-visible{outline:3px solid #278470;outline-offset:3px}
 @media(max-width:800px){.layout{grid-template-columns:1fr}.summary{width:100%}}@media(max-width:470px){.machines{grid-template-columns:1fr}.art{height:168px}.art svg{height:155px}}
+.rooms{border-top:1px solid var(--line);padding:28px 0 42px}.rooms h2{font-size:clamp(1.9rem,5vw,2.7rem);letter-spacing:-.05em;margin:4px 0 16px}.room-form{padding:20px;max-width:540px}.room-form label{display:block;font-weight:750;margin-bottom:6px}.room-form select{width:100%;font:inherit;color:inherit;background:white;border:1px solid #82998a;border-radius:8px;padding:10px}.room-form p{margin:12px 0;color:#455e53}.room-form select:focus-visible{outline:3px solid #278470;outline-offset:3px}
 </style>
 </head>
 <body>
@@ -48,6 +49,23 @@
 <aside class="summary" aria-labelledby="order"><div class="step">03 / Pago</div><h2 id="order">Tu selección</h2><ul id="selection" aria-live="polite"></ul><div class="total"><span>Total del pedido</span><strong id="total">$0 COP</strong></div><a class="pay" id="pay" aria-disabled="true" aria-describedby="payment-note">Pagar con Wompi</a><p id="payment-note">Selecciona una carga para ver cuánto debes ingresar en Wompi. El pago no activa las máquinas automáticamente.</p></aside>
 </div>
 <footer>Pulsa una carga seleccionada para quitarla del pedido.</footer>
+<section class="rooms" aria-labelledby="rooms-title">
+  <div class="kicker">Alojamiento</div>
+  <h2 id="rooms-title">Habitaciones César</h2>
+  <div class="card room-form">
+    <label for="room-rate">Tarifa de la habitación</label>
+    <select id="room-rate">
+      <option value="">Selecciona el valor acordado</option>
+      <option value="600000">$600.000 COP</option>
+      <option value="700000">$700.000 COP</option>
+      <option value="800000">$800.000 COP</option>
+      <option value="900000">$900.000 COP</option>
+      <option value="1000000">$1.000.000 COP</option>
+    </select>
+    <p id="room-payment-note" aria-live="polite">Selecciona la tarifa acordada con el alojamiento. El pago no confirma la reserva automáticamente.</p>
+    <a class="pay" id="room-pay" aria-disabled="true" aria-describedby="room-payment-note">Pagar habitación con Wompi</a>
+  </div>
+</section>
 </main>
 <script>
 const checkout = "https://checkout.wompi.co/l/VPOS_xVB9TP";
@@ -107,6 +125,23 @@ for (const group of groups) {
   });
 }
 renderSelection();
+
+const roomRate = document.querySelector("#room-rate");
+const roomPay = document.querySelector("#room-pay");
+const roomPaymentNote = document.querySelector("#room-payment-note");
+const initialRoomNote = roomPaymentNote.textContent;
+
+function renderRoomPayment() {
+  const amount = Number(roomRate.value);
+  roomPaymentNote.textContent = amount
+    ? "Ingresa " + formatPrice(amount) + " en Wompi. El pago no confirma la reserva automáticamente."
+    : initialRoomNote;
+  roomPay.setAttribute("aria-disabled", String(!amount));
+  if (amount) roomPay.href = checkout;
+  else roomPay.removeAttribute("href");
+}
+roomRate.addEventListener("change", renderRoomPayment);
+renderRoomPayment();
 </script>
 </body>
 </html>
