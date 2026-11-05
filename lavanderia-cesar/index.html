@@ -11,6 +11,8 @@
 .hero{padding:clamp(28px,5vw,58px) 0 30px}.kicker,.step{font-size:.72rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}.kicker{color:#38634e}h1,h2,p{margin:0}h1{font-size:clamp(2.8rem,7.7vw,5.4rem);letter-spacing:-.078em;line-height:1;margin:7px 0 14px}.hero p{color:#455e53}.layout{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(240px,1fr);align-items:start;gap:18px}.machines{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{background:white;border:1px solid var(--line);border-radius:23px;overflow:hidden}.art{height:190px;display:grid;place-items:center;position:relative;background:#dcece0}.dryer .art{background:#f4e6cc}.art .step{position:absolute;top:15px;left:16px}.art svg{height:175px;width:100%}.body{padding:17px}.body h2{font-size:1.52rem;letter-spacing:-.045em}.body p{font-size:.9rem;color:#455e53;margin-bottom:15px}.loads{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}.loads button{font:inherit;font-size:.75rem;font-weight:700;padding:9px 2px;border:1px solid #cad9ce;background:#fff;color:inherit;border-radius:8px;cursor:pointer}.loads button[aria-pressed=true]{background:var(--lime);border-color:#467259}.loads small{display:block;font-size:.68rem;font-weight:650;margin-top:3px}.summary li,.total{display:flex;justify-content:space-between;gap:10px}.total{border-top:1px solid #ffffff40;padding:10px 0 15px}.loads button:hover{border-color:#467259}.summary{background:var(--green);color:white;border-radius:23px;padding:22px}.summary .step{color:var(--lime)}.summary h2{margin:5px 0 12px;letter-spacing:-.035em}.summary ul{list-style:none;padding:0;margin:0 0 15px;min-height:50px}.summary li{padding:7px 0;border-top:1px solid #ffffff40;font-size:.91rem}.pay{display:block;text-align:center;background:var(--lime);color:#123a2b;font-weight:800;padding:12px;border-radius:10px;text-decoration:none}.pay[aria-disabled=true]{background:#e3eadb;color:#425747;cursor:default}.summary p{margin-top:12px;font-size:.79rem;color:#edf4eb}footer{padding:22px 0 32px;color:#455e53;font-size:.85rem}a:focus-visible,button:focus-visible{outline:3px solid #278470;outline-offset:3px}
 @media(max-width:800px){.layout{grid-template-columns:1fr}.summary{width:100%}}@media(max-width:470px){.machines{grid-template-columns:1fr}.art{height:168px}.art svg{height:155px}}
 .rooms{border-top:1px solid var(--line);padding:28px 0 42px}.room-shell{background:white;border:1px solid var(--line);border-radius:24px;overflow:hidden}.room-art{display:block;width:100%;height:clamp(185px,33vw,340px);background:#b7d9d5;object-fit:cover}.room-body{padding:clamp(17px,4vw,32px)}.rooms h2{font-size:clamp(2rem,6vw,3rem);line-height:1.12;letter-spacing:-.05em;margin:5px 0 8px}.room-intro{color:#455e53;margin-bottom:20px}.room-rates{border:0;padding:0;margin:0;min-width:0}.room-rates legend{font-weight:800;margin-bottom:9px}.rate-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:8px}.rate-card{display:flex;align-items:center;gap:7px;border:1px solid #c3d3c8;border-radius:11px;padding:11px 8px;cursor:pointer}.rate-card input{margin:0;accent-color:var(--green)}.rate-card:has(input:checked){background:var(--lime);border-color:var(--green)}.rate-card:has(input:focus-visible){outline:3px solid #278470;outline-offset:2px}.rate-card strong{display:block;font-size:clamp(.88rem,2vw,1.04rem);white-space:nowrap}.rate-card small{display:block;color:#455e53}.room-checkout{margin-top:20px;background:#eef3e8;padding:14px;border-radius:13px;display:flex;align-items:center;justify-content:space-between;gap:14px}.room-checkout .pay{flex-shrink:0}.room-checkout p{color:#29483b;font-size:.9rem}@media(max-width:620px){.room-checkout{display:grid}.room-art{height:190px}}
+.room-group{margin-top:14px}.room-group h3{margin:0 0 8px;font-size:.9rem;color:#38634e}.room-group .rate-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,155px),1fr));align-items:start}.room-group .rate-card{min-width:0;min-height:64px;padding:9px 10px}.room-group .rate-card strong{white-space:normal}.room-group .rate-card small{white-space:nowrap}
+@media(max-width:390px){.room-group .rate-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.room-group .rate-card{padding-inline:6px;gap:5px}}
 </style>
 </head>
 <body>
@@ -73,25 +75,43 @@
       <h2 id="rooms-title">Habitaciones César</h2>
       <p class="room-intro">Selecciona la habitación o cabaña que acordaste con el alojamiento. El precio se muestra en cada opción.</p>
       <fieldset class="room-rates" id="room-rates">
-        <legend>Habitaciones y cabañas</legend>
-        <div class="rate-grid">
-          <label class="rate-card"><input type="radio" name="room-rate" value="101" data-price="800000"><span><strong>Habitación 101</strong><small>$800.000 COP</small></span></label>
-          <label class="rate-card"><input type="radio" name="room-rate" value="102" data-price="600000"><span><strong>Habitación 102</strong><small>$600.000 COP</small></span></label>
-          <label class="rate-card"><input type="radio" name="room-rate" value="103" data-price="700000"><span><strong>Habitación 103</strong><small>$700.000 COP</small></span></label>
-          <label class="rate-card"><input type="radio" name="room-rate" value="201" data-price="700000"><span><strong>Habitación 201</strong><small>$700.000 COP</small></span></label>
-          <label class="rate-card"><input type="radio" name="room-rate" value="202" data-price="800000"><span><strong>Habitación 202</strong><small>$800.000 COP</small></span></label>
-          <label class="rate-card"><input type="radio" name="room-rate" value="301" data-price="1000000"><span><strong>Habitación 301</strong><small><div class="rate-grid">.000.000 COP</small></span></label>
-          <label class="rate-card"><input type="radio" name="room-rate" value="303" data-price="900000"><span><strong>Habitación 303</strong><small>$900.000 COP</small></span></label>
-          <label class="rate-card"><input type="radio" name="room-rate" value="304" data-price="700000"><span><strong>Habitación 304</strong><small>$700.000 COP</small></span></label>
-          <label class="rate-card"><input type="radio" name="room-rate" value="305" data-price="900000"><span><strong>Habitación 305</strong><small>$900.000 COP</small></span></label>
-          <label class="rate-card"><input type="radio" name="room-rate" value="306" data-price="600000"><span><strong>Habitación 306</strong><small>$600.000 COP</small></span></label>
-          <label class="rate-card"><input type="radio" name="room-rate" value="307" data-price="700000"><span><strong>Habitación 307</strong><small>$700.000 COP</small></span></label>
-          <label class="rate-card"><input type="radio" name="room-rate" value="308" data-price="900000"><span><strong>Habitación 308</strong><small>$900.000 COP</small></span></label>
-          <label class="rate-card"><input type="radio" name="room-rate" value="309" data-price="900000"><span><strong>Habitación 309</strong><small>$900.000 COP</small></span></label>
-          <label class="rate-card"><input type="radio" name="room-rate" value="Cabaña 1" data-price="1000000"><span><strong>Cabaña 1</strong><small><div class="rate-grid">.000.000 COP</small></span></label>
-          <label class="rate-card"><input type="radio" name="room-rate" value="Cabaña 2" data-price="900000"><span><strong>Cabaña 2</strong><small>$900.000 COP</small></span></label>
-          <label class="rate-card"><input type="radio" name="room-rate" value="Cabaña 3" data-price="800000"><span><strong>Cabaña 3</strong><small>$800.000 COP</small></span></label>
-        </div>
+        <legend>Elige tu habitación o cabaña</legend>
+        <section class="room-group" aria-labelledby="room-group-0">
+          <h3 id="room-group-0">Piso 1</h3>
+          <div class="rate-grid">
+            <label class="rate-card"><input type="radio" name="room-rate" value="101" data-price="800000" data-label="Habitación 101"><span><strong>Habitación 101</strong><small>$800.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="102" data-price="600000" data-label="Habitación 102"><span><strong>Habitación 102</strong><small>$600.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="103" data-price="700000" data-label="Habitación 103"><span><strong>Habitación 103</strong><small>$700.000 COP</small></span></label>
+          </div>
+        </section>
+        <section class="room-group" aria-labelledby="room-group-1">
+          <h3 id="room-group-1">Piso 2</h3>
+          <div class="rate-grid">
+            <label class="rate-card"><input type="radio" name="room-rate" value="201" data-price="700000" data-label="Habitación 201"><span><strong>Habitación 201</strong><small>$700.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="202" data-price="800000" data-label="Habitación 202"><span><strong>Habitación 202</strong><small>$800.000 COP</small></span></label>
+          </div>
+        </section>
+        <section class="room-group" aria-labelledby="room-group-2">
+          <h3 id="room-group-2">Piso 3</h3>
+          <div class="rate-grid">
+            <label class="rate-card"><input type="radio" name="room-rate" value="301" data-price="1000000" data-label="Habitación 301"><span><strong>Habitación 301</strong><small>$1.000.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="303" data-price="900000" data-label="Habitación 303"><span><strong>Habitación 303</strong><small>$900.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="304" data-price="700000" data-label="Habitación 304"><span><strong>Habitación 304</strong><small>$700.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="305" data-price="900000" data-label="Habitación 305"><span><strong>Habitación 305</strong><small>$900.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="306" data-price="600000" data-label="Habitación 306"><span><strong>Habitación 306</strong><small>$600.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="307" data-price="700000" data-label="Habitación 307"><span><strong>Habitación 307</strong><small>$700.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="308" data-price="900000" data-label="Habitación 308"><span><strong>Habitación 308</strong><small>$900.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="309" data-price="900000" data-label="Habitación 309"><span><strong>Habitación 309</strong><small>$900.000 COP</small></span></label>
+          </div>
+        </section>
+        <section class="room-group" aria-labelledby="room-group-3">
+          <h3 id="room-group-3">Cabañas</h3>
+          <div class="rate-grid">
+            <label class="rate-card"><input type="radio" name="room-rate" value="Cabaña 1" data-price="1000000" data-label="Cabaña 1"><span><strong>Cabaña 1</strong><small>$1.000.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="Cabaña 2" data-price="900000" data-label="Cabaña 2"><span><strong>Cabaña 2</strong><small>$900.000 COP</small></span></label>
+            <label class="rate-card"><input type="radio" name="room-rate" value="Cabaña 3" data-price="800000" data-label="Cabaña 3"><span><strong>Cabaña 3</strong><small>$800.000 COP</small></span></label>
+          </div>
+        </section>
       </fieldset>
       <div class="room-checkout">
         <p id="room-payment-note" aria-live="polite">Selecciona una habitación o cabaña para continuar. El pago no confirma la reserva automáticamente.</p>
@@ -166,9 +186,10 @@ const roomPaymentNote = document.querySelector("#room-payment-note");
 const initialRoomNote = roomPaymentNote.textContent;
 
 function renderRoomPayment() {
-  const amount = Number(roomRates.querySelector("input:checked")?.dataset.price ?? 0);
+  const selected = roomRates.querySelector("input:checked");
+  const amount = Number(selected?.dataset.price ?? 0);
   roomPaymentNote.textContent = amount
-    ? "Ingresa " + formatPrice(amount) + " en Wompi. El pago no confirma la reserva automáticamente."
+    ? selected.dataset.label + " · Ingresa " + formatPrice(amount) + " en Wompi. El pago no confirma la reserva automáticamente."
     : initialRoomNote;
   roomPay.setAttribute("aria-disabled", String(!amount));
   if (amount) roomPay.href = checkout;
