@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 180" role="img" aria-label="Ilustración de una lavadora de carga frontal">
+<style>.tambor{transform-origin:124px 101px;animation:giro 2.2s linear 2} @keyframes giro{to{transform:rotate(360deg)}} @media(prefers-reduced-motion:reduce){.tambor{animation:none}}</style>
+<ellipse cx="131" cy="161" rx="65" ry="8" fill="#b7d2be"/>
+<rect x="83" y="24" width="100" height="136" rx="12" fill="#87a696"/>
+<rect x="75" y="22" width="99" height="136" rx="11" fill="#fffdf5" stroke="#294b3d" stroke-width="2"/>
+<path d="M76 53h97" stroke="#a5b6ad"/><rect x="86" y="33" width="26" height="9" rx="3" fill="#c2d8ca"/><circle cx="152" cy="38" r="6" fill="#477360"/>
+<circle cx="124" cy="101" r="34" fill="#bddac9" stroke="#294b3d" stroke-width="3"/><circle cx="124" cy="101" r="26" fill="#427864"/>
+<g class="tambor"><path d="M99 105q12-10 25 0t25 0a25 25 0 0 1-50 0" fill="#99cfb6"/><circle cx="114" cy="93" r="4" fill="#d6f1e3"/><circle cx="132" cy="87" r="3" fill="#d6f1e3"/></g>
+</svg>
