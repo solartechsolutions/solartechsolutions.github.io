@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="room-art" viewBox="0 0 680 330" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustración de una casita entre montañas, con un jardín y un sendero">
+<style>.nubes{animation:brisa 4.5s ease-in-out 1} @keyframes brisa{50%{transform:translateX(20px);opacity:.62}} @media(prefers-reduced-motion:reduce){.nubes{animation:none}}</style>
+<defs><linearGradient id="room-sky" x2="0" y2="1"><stop stop-color="#b7d9d5"/><stop offset="1" stop-color="#fbefd4"/></linearGradient><linearGradient id="room-lawn" x2="0" y2="1"><stop stop-color="#9bbc86"/><stop offset="1" stop-color="#527d65"/></linearGradient></defs>
+<path fill="url(#room-sky)" d="M0 0h680v330H0z"/><circle cx="552" cy="74" r="43" fill="#ffe3a4"/>
+<g class="nubes"><path d="M52 70h96m-61 15h103m334 28h90" stroke="#fff9e9" stroke-width="6" stroke-linecap="round" opacity=".8"/></g>
+<path d="M0 186 98 96l88 70 94-92 110 97 90-69 200 90v138H0Z" fill="#86aca0"/><path d="M0 207 143 129l103 64 128-45 87 53 108-59 111 55v133H0Z" fill="#6f9886"/>
+<path d="M0 241q125-74 283-19 151 40 397-14v122H0Z" fill="url(#room-lawn)"/>
+<path d="M334 254h28q-7 31 87 76H306q47-37 28-76" fill="#ecd6a9"/><ellipse cx="343" cy="264" rx="146" ry="12" fill="#416c55" opacity=".34"/>
+<path d="M417 112h24v62h-24z" fill="#a75b45"/><path d="M413 110h32v9h-32z" fill="#894b3d"/>
+<path d="M231 170h215v90H231Z" fill="#e8c697"/><path d="M231 171l83-65 81 65v89H231Z" fill="#fff1d3"/>
+<path d="m213 176 101-83 103 83h-26l-77-62-76 62z" fill="#954e3e"/><path d="m314 93 99 14 62 69h-58z" fill="#b96b53"/>
+<path d="M304 260v-54a21 21 0 0 1 42 0v54Z" fill="#43675c"/><circle cx="337" cy="231" r="2.6" fill="#ffe0a2"/>
+<g fill="#fbd788" stroke="#446b5b" stroke-width="4"><rect x="251" y="190" width="35" height="35" rx="3"/><rect x="360" y="190" width="25" height="35" rx="3"/><rect x="409" y="190" width="24" height="35" rx="3"/><circle cx="314" cy="149" r="12"/></g>
+<path d="M268 190v35m-17-17h35m74 0h25m24 0h24" stroke="#446b5b" stroke-width="3"/>
+<g fill="#3f715d"><path d="M144 254v-51h6v51z"/><circle cx="147" cy="199" r="26"/><circle cx="129" cy="215" r="16"/><circle cx="164" cy="215" r="18"/><path d="M520 262v-60h7v60z"/><circle cx="523" cy="198" r="27"/><circle cx="503" cy="213" r="18"/><circle cx="540" cy="215" r="18"/></g>
+<path d="M185 270q20-28 40 0m225 0q18-31 40 0m80 25q16-24 34 0m-520 9q19-26 37 0" fill="#6b936f"/>
+<path d="M198 265h12m249-4h11m117 24h10m-493 7h8" stroke="#ffda94" stroke-width="5" stroke-linecap="round"/>
+</svg>
