@@ -78,6 +78,24 @@ a:focus-visible, button:focus-visible, .rate-card:has(input:focus-visible) { out
   .rate-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 470px) { .machines { grid-template-columns: 1fr; } }
+.rooms {
+  --room-border: #acbca9;
+  --room-ink: #254538;
+  --room-cream: #fff4db;
+  color: var(--room-ink);
+}
+.rooms .room-shell { border-color: var(--room-border); }
+.room-heading { background: linear-gradient(110deg, #f5ebd4, #c7dcd1); }
+.room-intro { color: #40594d; }
+.room-body { background: #e8efe4; }
+.room-group h3 { color: var(--room-ink); }
+.rate-card { background: var(--room-cream); border-color: #bdc7ad; }
+.rate-card small { color: #43594d; }
+.rate-card:hover { background: #fae8c3; border-color: #708a75; }
+.rate-card:has(input:checked) { background: #c9dfcc; border-color: #3e6955; }
+.room-checkout { border-top-color: var(--room-border); }
+.room-checkout p { color: #40594d; }
+.room-checkout .pay[aria-disabled=true] { background: #d7e2d5; color: #43594d; }
 </style>
 </head>
 <body>
