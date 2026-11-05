@@ -96,6 +96,8 @@ a:focus-visible, button:focus-visible, .rate-card:has(input:focus-visible) { out
 .room-checkout { border-top-color: var(--room-border); }
 .room-checkout p { color: #40594d; }
 .room-checkout .pay[aria-disabled=true] { background: #d7e2d5; color: #43594d; }
+.room-report { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 16px; margin-top: 14px; font-size: .9rem; }
+.room-report a { color: var(--green); font-weight: 700; text-underline-offset: 3px; }
 </style>
 </head>
 <body>
@@ -167,6 +169,7 @@ a:focus-visible, button:focus-visible, .rate-card:has(input:focus-visible) { out
         <p id="room-payment-note" aria-live="polite">Selecciona una habitación o cabaña para continuar. El pago no confirma la reserva automáticamente.</p>
         <a class="pay" id="room-pay" aria-disabled="true" aria-describedby="room-payment-note">Pagar habitación con Wompi</a>
       </div>
+      <p class="room-report"><span>¿Ya pagaste? Reporta la referencia de Wompi para recibir tu comprobante por correo.</span><a id="room-report" href="https://docs.google.com/forms/d/e/1FAIpQLSdqDcpOz2LxdmBHEhXGf4rXvXIFwq79kUaFlG5Zj2u48jWf3w/viewform">Reportar mi pago</a></p>
     </div>
   </div>
 </section>
@@ -234,10 +237,15 @@ const roomRates = document.querySelector("#room-rates");
 const roomPay = document.querySelector("#room-pay");
 const roomPaymentNote = document.querySelector("#room-payment-note");
 const initialRoomNote = roomPaymentNote.textContent;
+const reportLink = document.querySelector("#room-report");
+const reportForm = reportLink.href;
 
 function renderRoomPayment() {
   const selected = roomRates.querySelector("input:checked");
   const amount = Number(selected?.dataset.price ?? 0);
+  const reportUrl = new URL(reportForm);
+  if (selected) reportUrl.searchParams.set("entry.1338243842", selected.dataset.label);
+  reportLink.href = reportUrl.href;
   roomPaymentNote.textContent = amount
     ? selected.dataset.label + " · Ingresa " + formatPrice(amount) + " en Wompi. El pago no confirma la reserva automáticamente."
     : initialRoomNote;
