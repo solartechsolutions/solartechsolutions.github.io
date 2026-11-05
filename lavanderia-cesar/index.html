@@ -35,7 +35,7 @@ h1 { font-size: clamp(2.65rem, 7vw, 4.5rem); margin-bottom: 10px; }
 .card, .summary, .room-shell { border: 1px solid var(--line); background: var(--paper); border-radius: 13px; overflow: hidden; }
 .art { height: 122px; display: grid; place-items: center; background: #e5ebe2; }
 .dryer .art { background: #efe4d4; }
-.art svg { height: 114px; width: 100%; }
+.art img { height: 114px; width: 100%; }
 .body, .summary { padding: 17px; }
 .body h2, .summary h2 { font-size: 1.2rem; margin-bottom: 3px; }
 .body p { font-size: .88rem; margin-bottom: 12px; }
@@ -57,7 +57,7 @@ a:focus-visible, button:focus-visible, .rate-card:has(input:focus-visible) { out
 .room-heading { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; background: #ede6d8; }
 .room-heading-text { padding: clamp(18px, 4vw, 34px); }
 .rooms h2 { font-size: clamp(2rem, 5.5vw, 3.3rem); margin-bottom: 9px; }
-.room-art { display: block; width: 100%; height: 190px; }
+.room-art { display: block; width: 100%; height: 190px; object-fit: cover; }
 .room-body { padding: clamp(14px, 3vw, 26px); }
 .room-rates { border: 0; padding: 0; margin: 0; min-width: 0; }
 .room-rates legend { font-weight: 700; }
@@ -88,27 +88,13 @@ a:focus-visible, button:focus-visible, .rate-card:has(input:focus-visible) { out
 <section class="machines" aria-label="Máquinas disponibles">
 <article class="card">
 <div class="art">
-<svg viewBox="0 0 260 180" role="img" aria-label="Ilustración de una lavadora de carga frontal">
-<ellipse cx="131" cy="161" rx="65" ry="8" fill="#b7d2be"/>
-<rect x="83" y="24" width="100" height="136" rx="12" fill="#87a696"/>
-<rect x="75" y="22" width="99" height="136" rx="11" fill="#fffdf5" stroke="#294b3d" stroke-width="2"/>
-<path d="M76 53h97" stroke="#a5b6ad"/><rect x="86" y="33" width="26" height="9" rx="3" fill="#c2d8ca"/><circle cx="152" cy="38" r="6" fill="#477360"/>
-<circle cx="124" cy="101" r="34" fill="#bddac9" stroke="#294b3d" stroke-width="3"/><circle cx="124" cy="101" r="26" fill="#427864"/>
-<path d="M99 105q12-10 25 0t25 0a25 25 0 0 1-50 0" fill="#99cfb6"/><circle cx="114" cy="93" r="4" fill="#d6f1e3"/><circle cx="132" cy="87" r="3" fill="#d6f1e3"/>
-</svg></div>
+<img src="assets/lavadora.svg" alt="Lavadora de carga frontal" width="260" height="180"></div>
 <div class="body"><h2>Lavadora</h2><p>Escoge el tamaño de tu carga de lavado.</p><div class="loads" role="group" aria-label="Carga de lavadora">
 <button type="button" data-size="Pequeña" aria-pressed="false">Pequeña</button><button type="button" data-size="Mediana" aria-pressed="false">Mediana</button><button type="button" data-size="Grande" aria-pressed="false">Grande</button>
 </div></div></article>
 <article class="card dryer">
 <div class="art">
-<svg viewBox="0 0 260 180" role="img" aria-label="Ilustración de una secadora de carga frontal">
-<ellipse cx="131" cy="161" rx="65" ry="8" fill="#dfc69b"/>
-<rect x="83" y="24" width="100" height="136" rx="12" fill="#ab8d62"/>
-<rect x="75" y="22" width="99" height="136" rx="11" fill="#fffaf0" stroke="#5b4731" stroke-width="2"/>
-<path d="M76 53h97" stroke="#c1ad91"/><rect x="86" y="33" width="27" height="9" rx="3" fill="#e7cf9f"/><circle cx="152" cy="38" r="6" fill="#9f6537"/>
-<circle cx="124" cy="100" r="34" fill="#efd5a7" stroke="#5b4731" stroke-width="3"/><circle cx="124" cy="100" r="26" fill="#9c6844"/>
-<path d="M111 113c-9-8 9-13 0-22m13 22c-9-8 9-13 0-22m13 22c-9-8 9-13 0-22" fill="none" stroke="#f8dda5" stroke-width="3" stroke-linecap="round"/><path d="M109 143h30" stroke="#b99a73" stroke-width="3" stroke-linecap="round"/>
-</svg></div>
+<img src="assets/secadora.svg" alt="Secadora de carga frontal" width="260" height="180"></div>
 <div class="body"><h2>Secadora</h2><p>Escoge el tamaño de tu carga de secado.</p><div class="loads" role="group" aria-label="Carga de secadora">
 <button type="button" data-size="Pequeña" aria-pressed="false">Pequeña</button><button type="button" data-size="Mediana" aria-pressed="false">Mediana</button><button type="button" data-size="Grande" aria-pressed="false">Grande</button>
 </div></div></article>
@@ -118,23 +104,7 @@ a:focus-visible, button:focus-visible, .rate-card:has(input:focus-visible) { out
 <p class="laundry-hint">Pulsa una carga seleccionada para quitarla del pedido.</p>
 <section class="rooms" id="habitaciones" aria-labelledby="rooms-title">
   <div class="room-shell">
-    <div class="room-heading"><div class="room-heading-text"><h2 id="rooms-title">Habitaciones César</h2><p class="room-intro">Selecciona la habitación o cabaña que acordaste con el alojamiento. El precio se muestra en cada opción.</p></div><svg class="room-art" viewBox="0 0 680 330" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustración de una casita entre montañas, con un jardín y un sendero">
-<defs><linearGradient id="room-sky" x2="0" y2="1"><stop stop-color="#b7d9d5"/><stop offset="1" stop-color="#fbefd4"/></linearGradient><linearGradient id="room-lawn" x2="0" y2="1"><stop stop-color="#9bbc86"/><stop offset="1" stop-color="#527d65"/></linearGradient></defs>
-<path fill="url(#room-sky)" d="M0 0h680v330H0z"/><circle cx="552" cy="74" r="43" fill="#ffe3a4"/>
-<path d="M52 70h96m-61 15h103m334 28h90" stroke="#fff9e9" stroke-width="6" stroke-linecap="round" opacity=".8"/>
-<path d="M0 186 98 96l88 70 94-92 110 97 90-69 200 90v138H0Z" fill="#86aca0"/><path d="M0 207 143 129l103 64 128-45 87 53 108-59 111 55v133H0Z" fill="#6f9886"/>
-<path d="M0 241q125-74 283-19 151 40 397-14v122H0Z" fill="url(#room-lawn)"/>
-<path d="M334 254h28q-7 31 87 76H306q47-37 28-76" fill="#ecd6a9"/><ellipse cx="343" cy="264" rx="146" ry="12" fill="#416c55" opacity=".34"/>
-<path d="M417 112h24v62h-24z" fill="#a75b45"/><path d="M413 110h32v9h-32z" fill="#894b3d"/>
-<path d="M231 170h215v90H231Z" fill="#e8c697"/><path d="M231 171l83-65 81 65v89H231Z" fill="#fff1d3"/>
-<path d="m213 176 101-83 103 83h-26l-77-62-76 62z" fill="#954e3e"/><path d="m314 93 99 14 62 69h-58z" fill="#b96b53"/>
-<path d="M304 260v-54a21 21 0 0 1 42 0v54Z" fill="#43675c"/><circle cx="337" cy="231" r="2.6" fill="#ffe0a2"/>
-<g fill="#fbd788" stroke="#446b5b" stroke-width="4"><rect x="251" y="190" width="35" height="35" rx="3"/><rect x="360" y="190" width="25" height="35" rx="3"/><rect x="409" y="190" width="24" height="35" rx="3"/><circle cx="314" cy="149" r="12"/></g>
-<path d="M268 190v35m-17-17h35m74 0h25m24 0h24" stroke="#446b5b" stroke-width="3"/>
-<g fill="#3f715d"><path d="M144 254v-51h6v51z"/><circle cx="147" cy="199" r="26"/><circle cx="129" cy="215" r="16"/><circle cx="164" cy="215" r="18"/><path d="M520 262v-60h7v60z"/><circle cx="523" cy="198" r="27"/><circle cx="503" cy="213" r="18"/><circle cx="540" cy="215" r="18"/></g>
-<path d="M185 270q20-28 40 0m225 0q18-31 40 0m80 25q16-24 34 0m-520 9q19-26 37 0" fill="#6b936f"/>
-<path d="M198 265h12m249-4h11m117 24h10m-493 7h8" stroke="#ffda94" stroke-width="5" stroke-linecap="round"/>
-</svg></div>
+    <div class="room-heading"><div class="room-heading-text"><h2 id="rooms-title">Habitaciones César</h2><p class="room-intro">Selecciona la habitación o cabaña que acordaste con el alojamiento. El precio se muestra en cada opción.</p></div><img class="room-art" src="assets/casita.svg" alt="Casita entre montañas con jardín y sendero" width="680" height="330"></div>
     <div class="room-body">
       <fieldset class="room-rates" id="room-rates">
         <legend>Elige tu habitación o cabaña</legend>
