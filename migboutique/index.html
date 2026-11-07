@@ -92,9 +92,32 @@ const jewelry = [
     "originalPrice": 280000
   }
 ];
+const fragranceSets = [
+  {
+    "id": 14,
+    "name": "Set Perry Ellis 360° · 4 × 15 ml",
+    "image": "perry-ellis-360-set-15ml",
+    "swatch": "#d12669",
+    "desc": "Set Perry Ellis 360° para mujer con cuatro fragancias de 15 ml cada una. Incluye 360° Coral, 360° clásico, 360° Purple y 360° Red. El precio corresponde al set completo.",
+    "tag": "PERRY ELLIS",
+    "price": 160000,
+    "originalPrice": 260000
+  },
+  {
+    "id": 15,
+    "name": "Set Paris Corner Khair Discovery · 4 × 15 ml",
+    "image": "paris-corner-khair-discovery-15ml",
+    "swatch": "#4bb3a8",
+    "desc": "Khair Discovery Set de Paris Corner con cuatro fragancias de 15 ml cada una. El precio corresponde al set completo.",
+    "tag": "PARIS CORNER",
+    "price": 180000,
+    "originalPrice": 280000
+  }
+];
 const catalog = [
   ...wallets.map(wallet => ({ ...wallet, category: 'Billeteras', tag: 'COLUMBIA' })),
   ...jewelry.map(item => ({ ...item, category: 'Joyería', color: 'Otros', stock: 1 })),
+  ...fragranceSets.map(item => ({ ...item, category: 'Lociones', color: 'Otros' })),
   ...products.map(product => ({ ...product, price: null }))
 ];
 const quantityLimit = product => product.stock ?? 20;
@@ -112,17 +135,20 @@ function productPrices(product) {
     return '<p class="price">Precio por confirmar</p>';
   }
   const unit = product.stock === 1 ? 'unidad disponible' : 'unidades disponibles';
+  const availability = product.stock == null
+    ? 'Disponibilidad por confirmar'
+    : `${product.stock} ${unit}`;
   return `<div class="product-prices">
     <p class="original-price">Precio original <s>${money(product.originalPrice)}</s></p>
     <p class="price">Nuestro precio <strong>${money(product.price)} COP</strong></p>
-    <p class="stock-count">${product.stock} ${unit}</p>
+    <p class="stock-count">${availability}</p>
   </div>`;
 }
 function save(){try{localStorage.setItem('icm-favorites',JSON.stringify(favorites));localStorage.setItem('migboutique-cart-v1',JSON.stringify(cart))}catch{}$('#favcount').textContent=favorites.length;$('#bagcount').textContent=cart.reduce((n,row)=>n+row.quantity,0)}
 function totals(){return {quantity:cart.reduce((n,r)=>n+r.quantity,0),priced:cart.length>0&&cart.every(r=>Number.isFinite(catalog.find(p=>p.id===r.id).price)),subtotal:cart.reduce((n,r)=>n+(catalog.find(p=>p.id===r.id).price||0)*r.quantity,0)}}
 function render(){let colors=[...document.querySelectorAll('.color-filter:checked')].map(e=>e.value),types=[...document.querySelectorAll('.type-filter:checked')].map(e=>e.value),query=$('#search').value.trim().toLocaleLowerCase('es');let list=catalog.filter(p=>(category==='Todos'||p.category===category)&&(!onlyFavorites||favorites.includes(p.id))&&(!colors.length||colors.includes(p.color))&&(!types.length||types.includes(p.category))&&(p.name+' '+p.category).toLocaleLowerCase('es').includes(query));if($('#sort').value==='az')list.sort((a,b)=>a.name.localeCompare(b.name));if($('#sort').value==='za')list.sort((a,b)=>b.name.localeCompare(a.name));$('#products').innerHTML=list.map(p=>`<article><div class="photo"><a href="#producto-${p.id}" data-detail="${p.id}" aria-label="Ver ${p.name}"><img src="assets/${p.image}.jpg" alt="${p.name}" ${p.id>3?'loading="lazy"':''}></a><span class="badge">${p.tag}</span><button class="heart ${favorites.includes(p.id)?'selected':''}" data-fav="${p.id}" aria-label="${favorites.includes(p.id)?'Quitar de':'Añadir a'} favoritos: ${p.name}" aria-pressed="${favorites.includes(p.id)}">${favorites.includes(p.id)?'♥':'♡'}</button><button class="quick" data-detail="${p.id}">DESCUBRIR PRODUCTO ↗</button></div><p class="product-type">${p.category} · Estados Unidos</p><h3 class="product-name"><a href="#producto-${p.id}" data-detail="${p.id}">${p.name}</a></h3>${productPrices(p)}<div class="purchase-row"><div class="colors"><span class="swatch" style="background:${p.swatch}"></span></div><button class="add-card" data-add="${p.id}" aria-label="Añadir al carrito: ${p.name}">Añadir al carrito ＋</button></div></article>`).join('')||'<div class="empty">No encontramos productos con estos filtros.<br><br>Prueba otra búsqueda o limpia los filtros.</div>';$('#resultcount').textContent=`${list.length} ${list.length===1?'producto':'productos'}`;$('#breadcrumb').textContent=category==='Todos'?'Todo el catálogo':category;$('#categories').innerHTML=['Todos','Billeteras','Joyería','Carteras','Bolsos','Lociones'].map(c=>`<button class="cat ${category===c?'active':''}" data-category="${c}">${c==='Todos'?'Todo el catálogo':c}<span>${c==='Todos'?catalog.length:catalog.filter(p=>p.category===c).length}</span></button>`).join('');$('#alltab').classList.toggle('active',!onlyFavorites);$('#favtab').classList.toggle('active',onlyFavorites);save()}
 function open(title,html){$('#modaltitle').textContent=title;$('#modalbody').innerHTML=html;if(!modal.open)modal.showModal()}
-function detail(id){let p=catalog.find(p=>p.id===id);open('Una elección especial',`<div class="detail"><img ${p.stock != null?'class="wallet-detail"':''} src="assets/${p.image}.jpg" alt="${p.name}"><div><div class="eyebrow">${p.category} · MIGBoutique</div><h3>${p.name}</h3><p>${p.desc}</p>${productPrices(p)}${p.stock==null?'<p>Fotografía de inspiración. El catálogo de apertura está en preparación.</p>':''}<label class="quantity-label" for="detailqty">Cantidad</label><input id="detailqty" class="quantity-input" type="number" min="1" max="${quantityLimit(p)}" step="1" value="1"><button class="primary full" data-add="${id}">AÑADIR AL CARRITO</button></div></div>`)}
+function detail(id){let p=catalog.find(p=>p.id===id);open('Una elección especial',`<div class="detail"><img ${p.price != null?'class="wallet-detail"':''} src="assets/${p.image}.jpg" alt="${p.name}"><div><div class="eyebrow">${p.category} · MIGBoutique</div><h3>${p.name}</h3><p>${p.desc}</p>${productPrices(p)}${p.price==null?'<p>Fotografía de inspiración. El catálogo de apertura está en preparación.</p>':''}<label class="quantity-label" for="detailqty">Cantidad</label><input id="detailqty" class="quantity-input" type="number" min="1" max="${quantityLimit(p)}" step="1" value="1"><button class="primary full" data-add="${id}">AÑADIR AL CARRITO</button></div></div>`)}
 function cartRows(editable){return cart.map(row=>{let p=catalog.find(p=>p.id===row.id);return `<div class="bagrow"><img src="assets/${p.image}.jpg" alt="${p.name}"><div><strong>${p.name}</strong><p>${Number.isFinite(p.price)?money(p.price):'Precio por confirmar'}</p>${editable?`<div class="quantity-stepper"><button data-delta="-1" data-id="${p.id}" aria-label="Reducir cantidad: ${p.name}">−</button><span aria-label="Cantidad">${row.quantity}</span><button data-delta="1" data-id="${p.id}" aria-label="Aumentar cantidad: ${p.name}" ${row.quantity>=quantityLimit(p)?'disabled':''}>＋</button></div>`:`<p>Cantidad: ${row.quantity}</p>`}</div>${editable?`<button class="remove" data-remove="${p.id}" aria-label="Quitar ${p.name} del carrito">Quitar</button>`:''}</div>`}).join('')}
 function summary(){let t=totals();return `<div class="order-totals"><div><span>Subtotal · ${t.quantity} ${t.quantity===1?'artículo':'artículos'}</span><strong>${t.priced?money(t.subtotal):'Por confirmar'}</strong></div><div><span>Envío</span><span>Por confirmar</span></div><div class="order-total"><strong>Total</strong><strong>${t.priced?money(t.subtotal)+' + envío':'Por confirmar'}</strong></div></div>`}
 function showCart(){open('Tu carrito',`<div class="bagcontents">${cart.length?`<p class="message">Tus favoritos, en un solo lugar.</p>${cartRows(true)}${summary()}<button class="primary full" id="checkout">CONTINUAR CON LA COMPRA →</button><button class="secondary full" id="continue">SEGUIR EXPLORANDO</button><p class="checkout-note">El pago en línea estará disponible próximamente.</p>`:'<div class="empty-cart"><svg class="icon" viewBox="0 0 24 24"><path d="M4 7h16l1 15H3L4 7Z M8 9V6a4 4 0 0 1 8 0v3"/></svg><h3>Tu carrito está esperando algo especial.</h3><p class="message">Explora el catálogo y añade tus favoritos.</p></div><button class="primary full" id="continue">EXPLORAR EL CATÁLOGO</button>'}</div>`)}
