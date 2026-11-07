@@ -4,6 +4,7 @@
 
 .purchase-row{display:flex;align-items:center;justify-content:space-between;gap:8px}.add-card{font-size:10px;background:none;border:0;border-bottom:1px solid #b7afa3;padding:5px 0;color:var(--accent)}.quantity-label{display:block;font-size:11px;margin:18px 0 8px}.quantity-input{width:80px;padding:10px;border:1px solid var(--line);color:var(--ink)}.quantity-stepper{display:inline-flex;border:1px solid var(--line);align-items:center;justify-content:center}.quantity-stepper button{background:none;border:0;width:32px;height:30px}.quantity-stepper span{min-width:25px;text-align:center;font-size:12px}.order-totals{margin:25px 0 10px}.order-totals>div{display:flex;justify-content:space-between;padding:10px 0;font-size:12px;gap:20px}.order-total{border-top:1px solid var(--line);margin-top:10px;font-size:15px!important}.secondary{background:white;border:1px solid var(--line);padding:13px 20px;font-size:11px}.checkout-note{font-size:10px;color:var(--muted);line-height:1.7;text-align:center}.empty-cart{text-align:center;padding:25px 0}.empty-cart .icon{width:44px;height:44px}.empty-cart h3,.checkout-heading{font:24px Georgia}.checkout-steps{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);padding-bottom:18px;border-bottom:1px solid var(--line)}.checkout-steps b{color:var(--accent)}.opening-notice{background:var(--paper);padding:20px;font-size:12px;line-height:1.7;margin-top:18px}.opening-notice p{color:var(--muted);margin-bottom:0}.primary:disabled{background:#d8dad3;color:#666c60;cursor:not-allowed}.bagrow strong{font-size:12px;font-weight:normal}.bagrow p{line-height:1.5}dialog{max-height:90vh;overflow-y:auto}@media(max-width:700px){.purchase-row{align-items:flex-start;gap:10px;flex-direction:column}.bagcontents{padding:18px}.bagrow{gap:10px}.bagrow>img{width:45px;height:58px}.bagrow>.remove{font-size:10px}.checkout-steps{font-size:10px}}
 .product-prices p{margin:0 0 7px}.original-price{color:#62665c;font-size:11px}.original-price s{margin-left:3px}.product-prices .price strong{color:var(--ink);font-size:14px;margin-left:3px}.stock-count{color:#3b614d;font-size:11px}.detail .wallet-detail{object-fit:contain;background:#b4d4e7}.detail .product-prices{margin:16px 0}.nav{flex-wrap:wrap}@media(max-width:700px){.nav{gap:12px}}
+.detail-photos{display:flex;gap:8px;margin-top:8px}.detail-photos button{flex:1;padding:7px 8px;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:8px;font:inherit;font-size:12px;cursor:pointer}.detail-photos button[aria-pressed=true]{background:#e3f1f7;border-color:#93bed2}
 </style></head><body>
 <div class="announcement">DIRECTO DE ESTADOS UNIDOS <span>✦</span> 100% ORIGINALES</div>
 <header class="header"><a href="./" class="brand" aria-label="MIGBoutique inicio">MIG<em>Boutique</em><small>DE ESTADOS UNIDOS, PARA TI</small></a><nav class="nav" aria-label="Categorías principales"><a href="#catalogo" data-category="Todos">Todo el catálogo</a><a href="#catalogo" data-category="Billeteras">Billeteras</a><a href="#catalogo" data-category="Joyería">Joyería</a><a href="#catalogo" data-category="Carteras">Carteras</a><a href="#catalogo" data-category="Bolsos">Bolsos</a><a href="#catalogo" data-category="Lociones">Lociones</a></nav><div class="tools"><button class="iconbtn" id="searchbtn" aria-label="Buscar productos"><svg class="icon" viewBox="0 0 24 24"><circle cx="10" cy="10" r="7"/><path d="m15 15 6 6"/></svg></button><button class="iconbtn" id="favbtn" aria-label="Ver favoritos"><svg class="icon" viewBox="0 0 24 24"><path d="M12 21S2 15 2 8a5 5 0 0 1 10-1A5 5 0 0 1 22 8c0 7-10 13-10 13Z"/></svg><span class="count" id="favcount">0</span></button><button class="iconbtn" id="bagbtn" aria-label="Abrir carrito"><svg class="icon" viewBox="0 0 24 24"><path d="M4 7h16l1 15H3L4 7Z M8 9V6a4 4 0 0 1 8 0v3"/></svg><span class="count" id="bagcount">0</span></button></div></header>
@@ -114,10 +115,80 @@ const fragranceSets = [
     "originalPrice": 280000
   }
 ];
+const fragrances = [
+  {
+    "id": 16,
+    "name": "Juicy Couture · Viva La Juicy Glacé",
+    "image": "viva-la-juicy-glace",
+    "swatch": "#bd756e",
+    "desc": "Bruma corporal Viva La Juicy Glacé de Juicy Couture, en frasco con atomizador.",
+    "tag": "JUICY COUTURE",
+    "price": 80000,
+    "originalPrice": 140000,
+    "stock": 1
+  },
+  {
+    "id": 17,
+    "name": "Solmist · Jasmine & Dragon Fruit · 250 ml",
+    "image": "solmist-jasmine-dragon-fruit",
+    "swatch": "#ce9ca9",
+    "desc": "Bruma corporal perfumada de jazmín y fruta del dragón. Presentación de 250 ml.",
+    "tag": "SOLMIST",
+    "price": 70000,
+    "originalPrice": 130000,
+    "stock": 1
+  },
+  {
+    "id": 18,
+    "name": "Paris Corner · Eshal Vanilla · 100 ml",
+    "image": "eshal-vanilla",
+    "swatch": "#dfd5bf",
+    "desc": "Fragancia Eshal Vanilla de Paris Corner, en presentación de 100 ml.",
+    "tag": "PARIS CORNER",
+    "price": 150000,
+    "originalPrice": 200000,
+    "stock": 2
+  },
+  {
+    "id": 19,
+    "name": "Paris Corner · Khair Fusion",
+    "image": "khair-fusion",
+    "swatch": "#bb6353",
+    "desc": "Fragancia Khair Fusion de Paris Corner en su caja original.",
+    "tag": "PARIS CORNER",
+    "price": 150000,
+    "originalPrice": 200000,
+    "stock": 1
+  },
+  {
+    "id": 20,
+    "name": "Oscar de la Renta · Esprit d’Oscar · 100 ml",
+    "image": "esprit-oscar",
+    "swatch": "#c5c8c8",
+    "desc": "Esprit d’Oscar, eau de parfum de Oscar de la Renta en presentación de 100 ml.",
+    "tag": "OSCAR DE LA RENTA",
+    "price": 170000,
+    "originalPrice": 320000,
+    "stock": 1
+  },
+  {
+    "id": 21,
+    "name": "Set Calvin Klein · CK One",
+    "image": "ck-one-set",
+    "boxImage": "ck-one-caja",
+    "swatch": "#ddad49",
+    "desc": "Set CK One de Calvin Klein con fragancia, miniatura, loción hidratante y gel de baño. El precio corresponde al set completo.",
+    "tag": "CALVIN KLEIN",
+    "price": 320000,
+    "originalPrice": 400000,
+    "stock": 2
+  }
+];
 const catalog = [
   ...wallets.map(wallet => ({ ...wallet, category: 'Billeteras', tag: 'COLUMBIA' })),
   ...jewelry.map(item => ({ ...item, category: 'Joyería', color: 'Otros', stock: 1 })),
-  ...fragranceSets.map(item => ({ ...item, category: 'Lociones', color: 'Otros' })),
+  ...fragranceSets.map(item => ({ ...item, category: 'Lociones', color: 'Otros', stock: 1 })),
+  ...fragrances.map(item => ({ ...item, category: 'Lociones', color: 'Otros' })),
   ...products.map(product => ({ ...product, price: null }))
 ];
 const quantityLimit = product => product.stock ?? 20;
@@ -148,7 +219,34 @@ function save(){try{localStorage.setItem('icm-favorites',JSON.stringify(favorite
 function totals(){return {quantity:cart.reduce((n,r)=>n+r.quantity,0),priced:cart.length>0&&cart.every(r=>Number.isFinite(catalog.find(p=>p.id===r.id).price)),subtotal:cart.reduce((n,r)=>n+(catalog.find(p=>p.id===r.id).price||0)*r.quantity,0)}}
 function render(){let colors=[...document.querySelectorAll('.color-filter:checked')].map(e=>e.value),types=[...document.querySelectorAll('.type-filter:checked')].map(e=>e.value),query=$('#search').value.trim().toLocaleLowerCase('es');let list=catalog.filter(p=>(category==='Todos'||p.category===category)&&(!onlyFavorites||favorites.includes(p.id))&&(!colors.length||colors.includes(p.color))&&(!types.length||types.includes(p.category))&&(p.name+' '+p.category).toLocaleLowerCase('es').includes(query));if($('#sort').value==='az')list.sort((a,b)=>a.name.localeCompare(b.name));if($('#sort').value==='za')list.sort((a,b)=>b.name.localeCompare(a.name));$('#products').innerHTML=list.map(p=>`<article><div class="photo"><a href="#producto-${p.id}" data-detail="${p.id}" aria-label="Ver ${p.name}"><img src="assets/${p.image}.jpg" alt="${p.name}" ${p.id>3?'loading="lazy"':''}></a><span class="badge">${p.tag}</span><button class="heart ${favorites.includes(p.id)?'selected':''}" data-fav="${p.id}" aria-label="${favorites.includes(p.id)?'Quitar de':'Añadir a'} favoritos: ${p.name}" aria-pressed="${favorites.includes(p.id)}">${favorites.includes(p.id)?'♥':'♡'}</button><button class="quick" data-detail="${p.id}">DESCUBRIR PRODUCTO ↗</button></div><p class="product-type">${p.category} · Estados Unidos</p><h3 class="product-name"><a href="#producto-${p.id}" data-detail="${p.id}">${p.name}</a></h3>${productPrices(p)}<div class="purchase-row"><div class="colors"><span class="swatch" style="background:${p.swatch}"></span></div><button class="add-card" data-add="${p.id}" aria-label="Añadir al carrito: ${p.name}">Añadir al carrito ＋</button></div></article>`).join('')||'<div class="empty">No encontramos productos con estos filtros.<br><br>Prueba otra búsqueda o limpia los filtros.</div>';$('#resultcount').textContent=`${list.length} ${list.length===1?'producto':'productos'}`;$('#breadcrumb').textContent=category==='Todos'?'Todo el catálogo':category;$('#categories').innerHTML=['Todos','Billeteras','Joyería','Carteras','Bolsos','Lociones'].map(c=>`<button class="cat ${category===c?'active':''}" data-category="${c}">${c==='Todos'?'Todo el catálogo':c}<span>${c==='Todos'?catalog.length:catalog.filter(p=>p.category===c).length}</span></button>`).join('');$('#alltab').classList.toggle('active',!onlyFavorites);$('#favtab').classList.toggle('active',onlyFavorites);save()}
 function open(title,html){$('#modaltitle').textContent=title;$('#modalbody').innerHTML=html;if(!modal.open)modal.showModal()}
-function detail(id){let p=catalog.find(p=>p.id===id);open('Una elección especial',`<div class="detail"><img ${p.price != null?'class="wallet-detail"':''} src="assets/${p.image}.jpg" alt="${p.name}"><div><div class="eyebrow">${p.category} · MIGBoutique</div><h3>${p.name}</h3><p>${p.desc}</p>${productPrices(p)}${p.price==null?'<p>Fotografía de inspiración. El catálogo de apertura está en preparación.</p>':''}<label class="quantity-label" for="detailqty">Cantidad</label><input id="detailqty" class="quantity-input" type="number" min="1" max="${quantityLimit(p)}" step="1" value="1"><button class="primary full" data-add="${id}">AÑADIR AL CARRITO</button></div></div>`)}
+function detail(id) {
+  const product = catalog.find(item => item.id === id);
+  const gallery = product.boxImage ? `
+    <div class="detail-photos" aria-label="Vistas del producto">
+      <button type="button" data-photo="${product.image}" data-view="Contenido del set" aria-pressed="true">Ver contenido</button>
+      <button type="button" data-photo="${product.boxImage}" data-view="Caja del set" aria-pressed="false">Ver caja</button>
+    </div>` : '';
+  const sample = product.price == null ? '<p>Fotografía de inspiración. El catálogo de apertura está en preparación.</p>' : '';
+  open('Una elección especial', `<div class="detail">
+    <div><img id="detail-photo" ${product.price != null ? 'class="wallet-detail"' : ''} src="assets/${product.image}.jpg" alt="${product.name}">${gallery}</div>
+    <div><div class="eyebrow">${product.category} · MIGBoutique</div>
+      <h3>${product.name}</h3><p>${product.desc}</p>${productPrices(product)}${sample}
+      <label class="quantity-label" for="detailqty">Cantidad</label>
+      <input id="detailqty" class="quantity-input" type="number" min="1" max="${quantityLimit(product)}" step="1" value="1">
+      <button class="primary full" data-add="${id}">AÑADIR AL CARRITO</button>
+    </div>
+  </div>`);
+}
+modal.addEventListener('click', event => {
+  const button = event.target.closest('[data-photo]');
+  if (!button) return;
+  const photo = $('#detail-photo');
+  photo.src = `assets/${button.dataset.photo}.jpg`;
+  photo.alt = `${button.dataset.view} CK One de Calvin Klein`;
+  button.parentElement.querySelectorAll('[data-photo]').forEach(option => {
+    option.setAttribute('aria-pressed', String(option === button));
+  });
+});
 function cartRows(editable){return cart.map(row=>{let p=catalog.find(p=>p.id===row.id);return `<div class="bagrow"><img src="assets/${p.image}.jpg" alt="${p.name}"><div><strong>${p.name}</strong><p>${Number.isFinite(p.price)?money(p.price):'Precio por confirmar'}</p>${editable?`<div class="quantity-stepper"><button data-delta="-1" data-id="${p.id}" aria-label="Reducir cantidad: ${p.name}">−</button><span aria-label="Cantidad">${row.quantity}</span><button data-delta="1" data-id="${p.id}" aria-label="Aumentar cantidad: ${p.name}" ${row.quantity>=quantityLimit(p)?'disabled':''}>＋</button></div>`:`<p>Cantidad: ${row.quantity}</p>`}</div>${editable?`<button class="remove" data-remove="${p.id}" aria-label="Quitar ${p.name} del carrito">Quitar</button>`:''}</div>`}).join('')}
 function summary(){let t=totals();return `<div class="order-totals"><div><span>Subtotal · ${t.quantity} ${t.quantity===1?'artículo':'artículos'}</span><strong>${t.priced?money(t.subtotal):'Por confirmar'}</strong></div><div><span>Envío</span><span>Por confirmar</span></div><div class="order-total"><strong>Total</strong><strong>${t.priced?money(t.subtotal)+' + envío':'Por confirmar'}</strong></div></div>`}
 function showCart(){open('Tu carrito',`<div class="bagcontents">${cart.length?`<p class="message">Tus favoritos, en un solo lugar.</p>${cartRows(true)}${summary()}<button class="primary full" id="checkout">CONTINUAR CON LA COMPRA →</button><button class="secondary full" id="continue">SEGUIR EXPLORANDO</button><p class="checkout-note">El pago en línea estará disponible próximamente.</p>`:'<div class="empty-cart"><svg class="icon" viewBox="0 0 24 24"><path d="M4 7h16l1 15H3L4 7Z M8 9V6a4 4 0 0 1 8 0v3"/></svg><h3>Tu carrito está esperando algo especial.</h3><p class="message">Explora el catálogo y añade tus favoritos.</p></div><button class="primary full" id="continue">EXPLORAR EL CATÁLOGO</button>'}</div>`)}
