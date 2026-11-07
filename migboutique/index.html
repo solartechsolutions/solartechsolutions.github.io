@@ -184,8 +184,100 @@ const fragrances = [
     "stock": 2
   }
 ];
+const accessories = [
+  {
+    "id": 22,
+    "name": "Billetera Guess · Monograma claro",
+    "image": "guess-billetera-monograma-claro",
+    "category": "Billeteras",
+    "tag": "GUESS",
+    "color": "Neutros",
+    "swatch": "#d9c9bd",
+    "desc": "Billetera en tono crema con monograma Guess, cierre de cremallera y correa de muñeca.",
+    "price": 140000,
+    "originalPrice": 180000,
+    "stock": 1
+  },
+  {
+    "id": 23,
+    "name": "Billetera Tommy Hilfiger · Negra con banderas",
+    "image": "tommy-billetera-negra-banderas",
+    "category": "Billeteras",
+    "tag": "TOMMY HILFIGER",
+    "color": "Negro",
+    "swatch": "#28292a",
+    "desc": "Billetera negra con solapa, estampado de pequeñas banderas tricolor y placa metálica.",
+    "price": 160000,
+    "originalPrice": 200000
+  },
+  {
+    "id": 24,
+    "name": "Billetera Tommy Hilfiger · Roja en relieve",
+    "image": "tommy-billetera-roja-relieve",
+    "category": "Billeteras",
+    "tag": "TOMMY HILFIGER",
+    "color": "Otros",
+    "swatch": "#b9323d",
+    "desc": "Billetera roja con solapa, monograma geométrico en relieve y placa metálica.",
+    "price": 140000,
+    "originalPrice": 180000,
+    "stock": 1
+  },
+  {
+    "id": 25,
+    "name": "Billetera Tommy Hilfiger · Monograma crema",
+    "image": "tommy-billetera-clara-monograma",
+    "category": "Billeteras",
+    "tag": "TOMMY HILFIGER",
+    "color": "Neutros",
+    "swatch": "#e1d6c1",
+    "desc": "Billetera crema con solapa, monograma geométrico y emblema TH al frente.",
+    "price": 155000,
+    "originalPrice": 175000,
+    "stock": 1
+  },
+  {
+    "id": 26,
+    "name": "Billetera Tommy Hilfiger · Letras y correa azul",
+    "image": "tommy-billetera-letras-correa",
+    "category": "Billeteras",
+    "tag": "TOMMY HILFIGER",
+    "color": "Neutros",
+    "swatch": "#b9c3cf",
+    "desc": "Billetera clara con estampado de letras, franja tricolor y correa azul de muñeca.",
+    "price": 160000,
+    "originalPrice": 200000
+  },
+  {
+    "id": 27,
+    "name": "Bolso de mano Guess · Monograma gris 01",
+    "image": "guess-bolso-monograma-gris-01",
+    "category": "Bolsos",
+    "tag": "GUESS",
+    "color": "Neutros",
+    "swatch": "#454546",
+    "desc": "Bolso de mano en gris oscuro con monograma Guess, cierre de cremallera y placa triangular.",
+    "price": 210000,
+    "originalPrice": 400000,
+    "stock": 1
+  },
+  {
+    "id": 28,
+    "name": "Bolso de mano Guess · Monograma gris 02",
+    "image": "guess-bolso-monograma-gris-02",
+    "category": "Bolsos",
+    "tag": "GUESS",
+    "color": "Neutros",
+    "swatch": "#454546",
+    "desc": "Bolso de mano en gris oscuro con monograma Guess, placa triangular y tirador alargado en el cierre.",
+    "price": 230000,
+    "originalPrice": 460000,
+    "stock": 1
+  }
+];
 const catalog = [
   ...wallets.map(wallet => ({ ...wallet, category: 'Billeteras', tag: 'COLUMBIA' })),
+  ...accessories,
   ...jewelry.map(item => ({ ...item, category: 'Joyería', color: 'Otros', stock: 1 })),
   ...fragranceSets.map(item => ({ ...item, category: 'Lociones', color: 'Otros', stock: 1 })),
   ...fragrances.map(item => ({ ...item, category: 'Lociones', color: 'Otros' })),
