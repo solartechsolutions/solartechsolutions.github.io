@@ -189,7 +189,6 @@ const fragrances = [
     "swatch": "#d76227",
     "desc": "Perfume en atomizador, con su caja. Presentación de 1 fl oz (30 ml).",
     "image": "clinique-happy-30ml",
-    "imagePosition": "56% 46%",
     "price": 200000,
     "stock": 1
   },
@@ -383,7 +382,6 @@ const accessories = [
     "swatch": "#dcd6ca",
     "desc": "Tenis de malla clara con detalles dorados y suela blanca.",
     "image": "hoka-blanco-dorado",
-    "imageFit": "contain",
     "price": 550000,
     "originalPrice": 900000,
     "stock": 1
@@ -398,7 +396,6 @@ const accessories = [
     "desc": "Billetera negra de solapa con monograma en relieve y placa metálica al frente.",
     "image": "tommy-billetera-negra-monograma-relieve",
     "altImage": "tommy-billetera-negra-monograma-relieve-detalle",
-    "imageFit": "contain",
     "price": 160000,
     "originalPrice": 220000,
     "stock": 1
@@ -412,7 +409,6 @@ const accessories = [
     "swatch": "#b19b7d",
     "desc": "Billetera de solapa con monograma beige y negro, borde oscuro y herraje dorado.",
     "image": "tommy-billetera-monograma-beige-borde-negro",
-    "imageFit": "contain",
     "price": 160000,
     "originalPrice": 220000,
     "stock": 1
@@ -426,7 +422,6 @@ const accessories = [
     "swatch": "#1d1e20",
     "desc": "Billetera negra de solapa con acabado texturizado y el logo tricolor al frente.",
     "image": "tommy-billetera-negra-logo-bandera",
-    "imageFit": "contain",
     "price": 160000,
     "originalPrice": 220000,
     "stock": 1
@@ -440,7 +435,6 @@ const accessories = [
     "swatch": "#2461a3",
     "desc": "Tenis de malla azul con cordones oscuros y detalles verde lima en la suela.",
     "image": "hoka-azul-verde",
-    "imageFit": "contain",
     "price": 570000,
     "originalPrice": 980000,
     "stock": 1
@@ -454,7 +448,6 @@ const accessories = [
     "swatch": "#69676a",
     "desc": "Bolso gris con doble asa, correa ajustable, bolsillo frontal de solapa y llavero de mono.",
     "image": "kipling-gris-bolsillo-solapa",
-    "imageFit": "contain",
     "price": 320000,
     "originalPrice": 599000,
     "stock": 1
@@ -625,7 +618,7 @@ function productPrices(product) {
 }
 function save(){try{localStorage.setItem('icm-favorites',JSON.stringify(favorites));localStorage.setItem('migboutique-cart-v1',JSON.stringify(cart))}catch{}$('#favcount').textContent=favorites.length;$('#bagcount').textContent=cart.reduce((n,row)=>n+row.quantity,0)}
 function totals(){return {quantity:cart.reduce((n,r)=>n+r.quantity,0),priced:cart.length>0&&cart.every(r=>Number.isFinite(catalog.find(p=>p.id===r.id).price)),subtotal:cart.reduce((n,r)=>n+(catalog.find(p=>p.id===r.id).price||0)*r.quantity,0)}}
-function render(){let colors=[...document.querySelectorAll('.color-filter:checked')].map(e=>e.value),types=[...document.querySelectorAll('.type-filter:checked')].map(e=>e.value),query=$('#search').value.trim().toLocaleLowerCase('es');let list=catalog.filter(p=>(category==='Todos'||p.category===category)&&(!onlyFavorites||favorites.includes(p.id))&&(!colors.length||colors.includes(p.color))&&(!types.length||types.includes(p.category))&&(p.name+' '+p.category).toLocaleLowerCase('es').includes(query));if($('#sort').value==='az')list.sort((a,b)=>a.name.localeCompare(b.name));if($('#sort').value==='za')list.sort((a,b)=>b.name.localeCompare(a.name));$('#products').innerHTML=list.map((p,index)=>`<article><div class="photo"><a href="#producto-${p.id}" data-detail="${p.id}" aria-label="Ver ${p.name}"><img src="assets/${p.image}.jpg" alt="${p.name}" style="object-fit:${p.imageFit || 'cover'};object-position:${p.imagePosition || 'center'}" ${index>=3?'loading="lazy"':''}></a><span class="badge">${p.tag}</span><button class="heart ${favorites.includes(p.id)?'selected':''}" data-fav="${p.id}" aria-label="${favorites.includes(p.id)?'Quitar de':'Añadir a'} favoritos: ${p.name}" aria-pressed="${favorites.includes(p.id)}">${favorites.includes(p.id)?'♥':'♡'}</button><button class="quick" data-detail="${p.id}">DESCUBRIR PRODUCTO ↗</button></div><p class="product-type">${p.category} · Estados Unidos</p><h3 class="product-name"><a href="#producto-${p.id}" data-detail="${p.id}">${p.name}</a></h3>${productPrices(p)}<div class="purchase-row"><div class="colors"><span class="swatch" style="background:${p.swatch}"></span></div><button class="add-card" data-add="${p.id}" aria-label="Añadir al carrito: ${p.name}">Añadir al carrito ＋</button></div></article>`).join('')||'<div class="empty">No encontramos productos con estos filtros.<br><br>Prueba otra búsqueda o limpia los filtros.</div>';$('#resultcount').textContent=`${list.length} ${list.length===1?'producto':'productos'}`;$('#breadcrumb').textContent=category==='Todos'?'Todo el catálogo':category;$('#categories').innerHTML=['Todos','Billeteras','Joyería','Carteras','Bolsos','Lociones','Gorras','Belleza','Calzado','Maletas'].map(c=>`<button class="cat ${category===c?'active':''}" data-category="${c}">${c==='Todos'?'Todo el catálogo':c}<span>${c==='Todos'?catalog.length:catalog.filter(p=>p.category===c).length}</span></button>`).join('');$('#alltab').classList.toggle('active',!onlyFavorites);$('#favtab').classList.toggle('active',onlyFavorites);save()}
+function render(){let colors=[...document.querySelectorAll('.color-filter:checked')].map(e=>e.value),types=[...document.querySelectorAll('.type-filter:checked')].map(e=>e.value),query=$('#search').value.trim().toLocaleLowerCase('es');let list=catalog.filter(p=>(category==='Todos'||p.category===category)&&(!onlyFavorites||favorites.includes(p.id))&&(!colors.length||colors.includes(p.color))&&(!types.length||types.includes(p.category))&&(p.name+' '+p.category).toLocaleLowerCase('es').includes(query));if($('#sort').value==='az')list.sort((a,b)=>a.name.localeCompare(b.name));if($('#sort').value==='za')list.sort((a,b)=>b.name.localeCompare(a.name));$('#products').innerHTML=list.map((p,index)=>`<article><div class="photo"><a href="#producto-${p.id}" data-detail="${p.id}" aria-label="Ver ${p.name}"><img src="assets/${p.image}.jpg" alt="${p.name}" ${index>=3?'loading="lazy"':''}></a><span class="badge">${p.tag}</span><button class="heart ${favorites.includes(p.id)?'selected':''}" data-fav="${p.id}" aria-label="${favorites.includes(p.id)?'Quitar de':'Añadir a'} favoritos: ${p.name}" aria-pressed="${favorites.includes(p.id)}">${favorites.includes(p.id)?'♥':'♡'}</button><button class="quick" data-detail="${p.id}">DESCUBRIR PRODUCTO ↗</button></div><p class="product-type">${p.category} · Estados Unidos</p><h3 class="product-name"><a href="#producto-${p.id}" data-detail="${p.id}">${p.name}</a></h3>${productPrices(p)}<div class="purchase-row"><div class="colors"><span class="swatch" style="background:${p.swatch}"></span></div><button class="add-card" data-add="${p.id}" aria-label="Añadir al carrito: ${p.name}">Añadir al carrito ＋</button></div></article>`).join('')||'<div class="empty">No encontramos productos con estos filtros.<br><br>Prueba otra búsqueda o limpia los filtros.</div>';$('#resultcount').textContent=`${list.length} ${list.length===1?'producto':'productos'}`;$('#breadcrumb').textContent=category==='Todos'?'Todo el catálogo':category;$('#categories').innerHTML=['Todos','Billeteras','Joyería','Carteras','Bolsos','Lociones','Gorras','Belleza','Calzado','Maletas'].map(c=>`<button class="cat ${category===c?'active':''}" data-category="${c}">${c==='Todos'?'Todo el catálogo':c}<span>${c==='Todos'?catalog.length:catalog.filter(p=>p.category===c).length}</span></button>`).join('');$('#alltab').classList.toggle('active',!onlyFavorites);$('#favtab').classList.toggle('active',onlyFavorites);save()}
 function open(title,html){$('#modaltitle').textContent=title;$('#modalbody').innerHTML=html;if(!modal.open)modal.showModal()}
 function detail(id) {
   const product = catalog.find(item => item.id === id);
