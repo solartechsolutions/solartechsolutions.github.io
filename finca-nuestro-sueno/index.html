@@ -24,6 +24,7 @@
         <a href="#inicio" data-tab="inicio" aria-current="page">Inicio</a>
         <a href="#finca" data-tab="finca">La finca</a>
         <a href="#espacios" data-tab="espacios">Espacios</a>
+        <a class="nav-karaoke" href="#karaoke" data-tab="karaoke">Karaoke</a>
         <a href="#galeria" data-tab="galeria">Galería</a>
         <a href="#parques" data-tab="parques">Parques y boletas</a>
         <a href="#tienda" data-tab="tienda">Tienda</a>
@@ -73,6 +74,21 @@
         </figure>
       </section>
 
+      <section class="karaoke-feature section-shell" data-page="finca" aria-labelledby="karaoke-feature-title">
+        <div class="karaoke-feature-inner">
+          <figure class="karaoke-feature-photo">
+            <img src="./assets/noche-karaoke.webp" alt="Ilustración de una noche de karaoke con amigos" loading="lazy" />
+            <figcaption>Imagen ilustrativa</figcaption>
+          </figure>
+          <div class="karaoke-feature-copy">
+            <p class="eyebrow">Una noche para cantar juntos</p>
+            <h2 id="karaoke-feature-title">El micrófono es suyo</h2>
+            <p>Armen su noche de karaoke en Nuestro Sueño. Nosotros ponemos el equipo y el proyector; ustedes eligen las canciones.</p>
+            <a class="button gold" href="#karaoke" data-tab="karaoke">Descubrir el karaoke <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
       <section class="rooms spaces section-shell" id="espacios" data-page="espacios">
         <div class="section-heading">
           <div>
@@ -112,7 +128,7 @@
           <article class="room-card"><img src="./assets/finca-jardin.webp" alt="Jardín y zonas verdes de Nuestro Sueño" loading="lazy" /><div><span>Naturaleza</span><h3>Jardín y zonas verdes</h3><p>Espacios al aire libre para disfrutar el paisaje y el ambiente de la finca.</p></div></article>
           <article class="room-card"><img src="./assets/balcon-atardecer.webp" alt="Balcón en la planta alta" loading="lazy" /><div><span>Vista a la finca</span><h3>Balcón</h3><p>La habitación familiar de la planta alta cuenta con un balcón con vista a la casa y sus alrededores.</p></div></article>
           <article class="room-card"><img src="./assets/IMG_6451.webp" alt="Zona cubierta y parqueadero de la finca" loading="lazy" /><div><span>Tu llegada</span><h3>Parqueadero</h3><p>Una zona destinada a estacionar durante tu visita. Utilízala de forma responsable.</p></div></article>
-          <article class="cinema-card"><span class="eyebrow">Después del atardecer</span><h3>Noches de cine y karaoke</h3><p>Disfruten de una película o armen su propia noche de karaoke. Tenemos todos los equipos necesarios y, con el proyector, pueden poner la letra de sus canciones favoritas en la pared que elijan. ¡Una noche inolvidable para cantar con familia o amigos!</p><a class="button gold" href="#galeria" data-tab="galeria">Explorar la galería</a></article>
+          <article class="cinema-card"><span class="eyebrow">Después del atardecer</span><h3>Noches de cine y karaoke</h3><p>Disfruten de una película o armen su propia noche de karaoke. Tenemos todos los equipos necesarios y, con el proyector, pueden poner la letra de sus canciones favoritas en la pared que elijan. ¡Una noche inolvidable para cantar con familia o amigos!</p><a class="button gold" href="#karaoke" data-tab="karaoke">Ver noches de karaoke</a></article>
         </div>
       </section>
 
@@ -126,9 +142,27 @@
           <div class="experience-items">
             <article><strong>01</strong><div><h3>Piscina y jacuzzi</h3><p>Disfruta la zona húmeda rodeada de naturaleza, de día o bajo las luces nocturnas.</p></div></article>
             <article><strong>02</strong><div><h3>Ping-pong y diversión</h3><p>Un espacio para competir, reír y compartir en grupo.</p></div></article>
-            <article><strong>03</strong><div><h3>Noches de cine y karaoke</h3><p>Vean una película o canten juntos. La finca cuenta con todos los equipos de karaoke y un proyector para mostrar las letras en la pared que prefieran.</p></div></article>
+            <article><strong>03</strong><div><h3>Noches de cine y karaoke</h3><p>Vean una película o canten juntos. La finca cuenta con todos los equipos de karaoke y un proyector para mostrar las letras en la pared que prefieran.</p><a class="experience-karaoke-link" href="#karaoke" data-tab="karaoke">Ver noches de karaoke ↗</a></div></article>
           </div>
         </div>
+      </section>
+
+      <section class="karaoke section-shell" id="karaoke" data-page="karaoke" aria-labelledby="karaoke-title">
+        <div class="karaoke-heading">
+          <p class="eyebrow">Después del atardecer · Nuestro Sueño</p>
+          <h2 id="karaoke-title">Noches de karaoke</h2>
+          <p>Elijan su canción favorita, tomen el micrófono y canten juntos. Tenemos todos los equipos necesarios para armar una noche inolvidable en la finca.</p>
+        </div>
+        <figure class="karaoke-photo">
+          <img src="./assets/noche-karaoke.webp" alt="Ilustración de un grupo cantando karaoke con las letras proyectadas en la pared" loading="lazy" />
+          <figcaption>Imagen ilustrativa de la experiencia</figcaption>
+        </figure>
+        <div class="karaoke-details">
+          <article><span>01</span><h3>Equipo listo para cantar</h3><p>Contamos con los equipos necesarios para disfrutar del karaoke en familia o con amigos.</p></article>
+          <article><span>02</span><h3>Las letras en la pared</h3><p>Usen el proyector para ver las letras de sus canciones en la pared que elijan y cantar todos juntos.</p></article>
+          <article><span>03</span><h3>Una noche a su ritmo</h3><p>Pasen el micrófono, armen un dúo o terminen el día con una película.</p></article>
+        </div>
+        <div class="karaoke-actions"><a class="button gold" href="#reservar" data-tab="reservar">Consultar disponibilidad</a><a class="button secondary" href="#finca" data-tab="finca">Volver a La finca</a></div>
       </section>
 
       <section class="gallery section-shell" id="galeria" data-page="galeria">

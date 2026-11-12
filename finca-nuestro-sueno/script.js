@@ -39,11 +39,12 @@ const siteHeader = document.querySelector(".site-header");
 const navToggle = document.querySelector(".nav-toggle");
 const pageSections = [...document.querySelectorAll("[data-page]")];
 const tabLinks = [...document.querySelectorAll("[data-tab]")];
-const validPages = new Set(["inicio", "finca", "espacios", "galeria", "parques", "tienda", "transporte", "reservar"]);
+const validPages = new Set(["inicio", "finca", "espacios", "karaoke", "galeria", "parques", "tienda", "transporte", "reservar"]);
 const pageTitles = {
   inicio: "Finca Nuestro Sueño | Quimbaya, Quindío",
   finca: "La finca | Nuestro Sueño",
   espacios: "Espacios de la finca | Nuestro Sueño",
+  karaoke: "Noches de karaoke | Nuestro Sueño",
   galeria: "Galería | Nuestro Sueño",
   parques: "Parques y boletas | Nuestro Sueño",
   tienda: "Tienda | Nuestro Sueño",
